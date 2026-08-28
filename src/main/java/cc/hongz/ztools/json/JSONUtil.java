@@ -5,7 +5,11 @@ import cc.hongz.ztools.core.io.IORuntimeException;
 import cc.hongz.ztools.core.io.file.FileReader;
 import cc.hongz.ztools.core.lang.TypeReference;
 import cc.hongz.ztools.core.map.MapWrapper;
-import cc.hongz.ztools.core.util.*;
+import cc.hongz.ztools.core.util.ArrayUtil;
+import cc.hongz.ztools.core.util.ClassUtil;
+import cc.hongz.ztools.core.util.HexUtil;
+import cc.hongz.ztools.core.util.ObjectUtil;
+import cc.hongz.ztools.core.util.StrUtil;
 import cc.hongz.ztools.json.serialize.GlobalSerializeMapping;
 import cc.hongz.ztools.json.serialize.JSONArraySerializer;
 import cc.hongz.ztools.json.serialize.JSONDeserializer;
@@ -19,13 +23,18 @@ import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 import java.sql.SQLException;
 import java.time.temporal.TemporalAccessor;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * JSON工具类。
  *
  * @author Looly
  */
+@SuppressWarnings("checkstyle:HideUtilityClassConstructor")
 public class JSONUtil {
 
     // -------------------------------------------------------------------- Pause start
@@ -81,7 +90,7 @@ public class JSONUtil {
     }
 
     /**
-     * JSON字符串转JSONObject对象。<br>
+     * JSON字符串转JSONObject对象。 <br>
      * 此方法会忽略空值，但是对JSON字符串不影响
      *
      * @param obj Bean对象或者Map
@@ -92,7 +101,7 @@ public class JSONUtil {
     }
 
     /**
-     * JSON字符串转JSONObject对象。<br>
+     * JSON字符串转JSONObject对象。 <br>
      * 此方法会忽略空值，但是对JSON字符串不影响
      *
      * @param obj    Bean对象或者Map
@@ -178,7 +187,7 @@ public class JSONUtil {
     }
 
     /**
-     * 转换对象为JSON，如果用户不配置JSONConfig，则JSON的有序与否与传入对象有关。。<br>
+     * 转换对象为JSON，如果用户不配置JSONConfig，则JSON的有序与否与传入对象有关。。 <br>
      * 支持的对象：
      * <ul>
      *     <li>String: 转换为相应的对象</li>
@@ -194,7 +203,7 @@ public class JSONUtil {
     }
 
     /**
-     * 转换对象为JSON，如果用户不配置JSONConfig，则JSON的有序与否与传入对象有关。。<br>
+     * 转换对象为JSON，如果用户不配置JSONConfig，则JSON的有序与否与传入对象有关。。 <br>
      * 支持的对象：
      * <ul>
      *     <li>String: 转换为相应的对象</li>
@@ -220,9 +229,9 @@ public class JSONUtil {
         } else if (obj instanceof MapWrapper) {
             // MapWrapper实现了Iterable会被当作JSONArray，此处做修正
             json = parseObj(obj, config);
-        } else if (obj instanceof Iterable || obj instanceof Iterator || ArrayUtil.isArray(obj)) {// 列表
+        } else if (obj instanceof Iterable || obj instanceof Iterator || ArrayUtil.isArray(obj)) { // 列表
             json = parseArray(obj, config);
-        } else {// 对象
+        } else { // 对象
             json = parseObj(obj, config);
         }
 
@@ -415,7 +424,7 @@ public class JSONUtil {
     }
 
     /**
-     * JSON字符串转为实体类对象，转换异常将被抛出。<br>
+     * JSON字符串转为实体类对象，转换异常将被抛出。 <br>
      * 通过{@link JSONConfig}可选是否忽略大小写、忽略null等配置
      *
      * @param <T>        Bean类型
@@ -451,7 +460,8 @@ public class JSONUtil {
      * @return 实体类对象
      * @since 4.3.2
      */
-    public static <T> T toBean(final String jsonString, final TypeReference<T> typeReference, final boolean ignoreError) {
+    public static <T> T toBean(final String jsonString, final TypeReference<T> typeReference, final boolean
+            ignoreError) {
         return toBean(jsonString, typeReference.getType(), ignoreError);
     }
 
@@ -533,7 +543,7 @@ public class JSONUtil {
     }
 
     /**
-     * 通过表达式获取JSON中嵌套的对象。<br>
+     * 通过表达式获取JSON中嵌套的对象。 <br>
      * <ol>
      * <li>.表达式，可以获取Bean对象中的属性（字段）值或者Map中key对应的值</li>
      * <li>[]表达式，可以获取集合等对象中对应index的值</li>
@@ -558,7 +568,7 @@ public class JSONUtil {
     }
 
     /**
-     * 通过表达式获取JSON中嵌套的对象。<br>
+     * 通过表达式获取JSON中嵌套的对象。 <br>
      * <ol>
      * <li>.表达式，可以获取Bean对象中的属性（字段）值或者Map中key对应的值</li>
      * <li>[]表达式，可以获取集合等对象中对应index的值</li>
@@ -595,7 +605,7 @@ public class JSONUtil {
     }
 
     /**
-     * 设置表达式指定位置（或field对应）的值。<br>
+     * 设置表达式指定位置（或field对应）的值。 <br>
      * 若表达式指向一个JSONArray则设置其坐标对应位置的值，若指向JSONObject则put对应key的值<br>
      * 注意：如果为JSONArray，则设置值的下标不能大于已有JSONArray的长度<br>
      * <ol>
@@ -621,7 +631,7 @@ public class JSONUtil {
     }
 
     /**
-     * 对所有双引号做转义处理（使用双反斜杠做转义）。<br>
+     * 对所有双引号做转义处理（使用双反斜杠做转义）。 <br>
      * 为了能在HTML中较好的显示，会将&lt;/转义为&lt;\/<br>
      * JSON字符串中不能包含控制字符和未经转义的引号和反斜杠
      *
@@ -633,7 +643,7 @@ public class JSONUtil {
     }
 
     /**
-     * 对所有双引号做转义处理（使用双反斜杠做转义）。<br>
+     * 对所有双引号做转义处理（使用双反斜杠做转义）。 <br>
      * 为了能在HTML中较好的显示，会将&lt;/转义为&lt;\/<br>
      * JSON字符串中不能包含控制字符和未经转义的引号和反斜杠
      *
@@ -653,7 +663,7 @@ public class JSONUtil {
     }
 
     /**
-     * 对所有双引号做转义处理（使用双反斜杠做转义）。<br>
+     * 对所有双引号做转义处理（使用双反斜杠做转义）。 <br>
      * 为了能在HTML中较好的显示，会将&lt;/转义为&lt;\/<br>
      * JSON字符串中不能包含控制字符和未经转义的引号和反斜杠
      *
@@ -667,7 +677,7 @@ public class JSONUtil {
     }
 
     /**
-     * 对所有双引号做转义处理（使用双反斜杠做转义）。<br>
+     * 对所有双引号做转义处理（使用双反斜杠做转义）。 <br>
      * 为了能在HTML中较好的显示，会将&lt;/转义为&lt;\/<br>
      * JSON字符串中不能包含控制字符和未经转义的引号和反斜杠
      *
@@ -731,7 +741,7 @@ public class JSONUtil {
     }
 
     /**
-     * 在需要的时候包装对象。<br>
+     * 在需要的时候包装对象。 <br>
      * 包装包括：
      * <ul>
      * <li>{@code null} =》 {@code JSONNull.NULL}</li>
@@ -966,10 +976,11 @@ public class JSONUtil {
         GlobalSerializeMapping.put(type, deserializer);
     }
 
-    // --------------------------------------------------------------------------------------------- Private method start
+    // --------------------------------------------------------------------------------------------- Private
+    // method start
 
     /**
-     * 转义不可见字符。<br>
+     * 转义不可见字符。 <br>
      * 见：<a href="https://en.wikibooks.org/wiki/Unicode/Character_reference/0000-0FFF">https://en.wikibooks.org/wiki/Unicode/Character_reference/0000-0FFF</a>
      *
      * @param c 字符

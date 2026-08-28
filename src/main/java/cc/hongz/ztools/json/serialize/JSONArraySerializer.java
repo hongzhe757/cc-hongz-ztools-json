@@ -10,4 +10,4 @@ import cc.hongz.ztools.json.JSONArray;
  * @author Looly
  */
 @FunctionalInterface
-public interface JSONArraySerializer<V> extends JSONSerializer<JSONArray, V>{}
+public interface JSONArraySerializer<V> extends JSONSerializer<JSONArray, V> { }

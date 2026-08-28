@@ -14,6 +14,7 @@ import cc.hongz.ztools.json.JSONObject;
  * @author looly
  * @since 5.7.11
  */
+@SuppressWarnings("checkstyle:HideUtilityClassConstructor")
 public class JSONXMLSerializer {
     /**
      * 转换JSONObject为XML
@@ -48,7 +49,8 @@ public class JSONXMLSerializer {
      * @return A string.
      * @throws JSONException JSON解析异常
      */
-    public static String toXml(final Object object, final String tagName, final String... contentKeys) throws JSONException {
+    public static String toXml(final Object object, final String tagName, final String... contentKeys) throws
+            JSONException {
         if (null == object) {
             return null;
         }

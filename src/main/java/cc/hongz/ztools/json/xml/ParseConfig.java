@@ -15,7 +15,7 @@ package cc.hongz.ztools.json.xml;
 import java.io.Serializable;
 
 /**
- * XML解析为JSON的可选选项。<br>
+ * XML解析为JSON的可选选项。 <br>
  * 参考：https://github.com/stleary/JSON-java/blob/master/src/main/java/org/json/ParserConfiguration.java
  *
  * @author AylwardJ, Looly
@@ -61,8 +61,8 @@ public class ParseConfig implements Serializable {
      * @param keepStrings 是否保持值为String类型
      * @return this
      */
-    public ParseConfig setKeepStrings(final boolean keepStrings) {
-        this.keepStrings = keepStrings;
+    public ParseConfig setKeepStrings(final boolean newKeepStrings) {
+        this.keepStrings = newKeepStrings;
         return this;
     }
 
@@ -81,8 +81,8 @@ public class ParseConfig implements Serializable {
      * @param maxNestingDepth 最大嵌套深度
      * @return this
      */
-    public ParseConfig setMaxNestingDepth(final int maxNestingDepth) {
-        this.maxNestingDepth = maxNestingDepth;
+    public ParseConfig setMaxNestingDepth(final int newMaxNestingDepth) {
+        this.maxNestingDepth = newMaxNestingDepth;
         return this;
     }
 }

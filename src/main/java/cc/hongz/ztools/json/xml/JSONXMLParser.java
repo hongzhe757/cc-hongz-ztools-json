@@ -12,6 +12,7 @@ import cc.hongz.ztools.json.XMLTokener;
  * @author JSON.org, looly
  * @since 5.7.11
  */
+@SuppressWarnings("checkstyle:HideUtilityClassConstructor")
 public class JSONXMLParser {
 
     /**
@@ -23,7 +24,8 @@ public class JSONXMLParser {
      * @param keepStrings 如果为{@code true}，则值保持String类型，不转换为数字或boolean
      * @throws JSONException 解析异常
      */
-    public static void parseJSONObject(final JSONObject jo, final String xmlStr, final boolean keepStrings) throws JSONException {
+    public static void parseJSONObject(final JSONObject jo, final String xmlStr, final boolean keepStrings)
+            throws JSONException {
         parseJSONObject(jo, xmlStr, ParseConfig.of().setKeepStrings(keepStrings));
     }
 
@@ -36,7 +38,8 @@ public class JSONXMLParser {
      * @param parseConfig 解析选项
      * @throws JSONException 解析异常
      */
-    public static void parseJSONObject(final JSONObject jo, final String xmlStr, final ParseConfig parseConfig) throws JSONException {
+    public static void parseJSONObject(final JSONObject jo, final String xmlStr, final ParseConfig
+            parseConfig) throws JSONException {
         final XMLTokener x = new XMLTokener(xmlStr, jo.getConfig());
         while (x.more() && x.skipPast("<")) {
             parse(x, jo, null, parseConfig, 0);
@@ -54,7 +57,8 @@ public class JSONXMLParser {
      * @return true if the close tag is processed.
      * @throws JSONException JSON异常
      */
-    private static boolean parse(final XMLTokener x, final JSONObject context, final String name, final ParseConfig parseConfig, final int currentNestingDepth) throws JSONException {
+    private static boolean parse(final XMLTokener x, final JSONObject context, final String name, final
+            ParseConfig parseConfig, final int currentNestingDepth) throws JSONException {
         char c;
         int i;
         JSONObject jsonobject;
@@ -142,7 +146,8 @@ public class JSONXMLParser {
                         if (!(token instanceof String)) {
                             throw x.syntaxError("Missing value");
                         }
-                        jsonobject.accumulate(string, keepStrings ? token : InternalJSONUtil.stringToValue((String) token));
+                        jsonobject.accumulate(string, keepStrings ? token :
+                                InternalJSONUtil.stringToValue((String) token));
                         token = null;
                     } else {
                         jsonobject.accumulate(string, "");
@@ -172,7 +177,8 @@ public class JSONXMLParser {
                         } else if (token instanceof String) {
                             string = (String) token;
                             if (!string.isEmpty()) {
-                                jsonobject.accumulate("content", keepStrings ? token : InternalJSONUtil.stringToValue(string));
+                                jsonobject.accumulate("content", keepStrings ? token :
+                                        InternalJSONUtil.stringToValue(string));
                             }
 
                         } else if (token == XML.LT) {

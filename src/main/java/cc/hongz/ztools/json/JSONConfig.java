@@ -89,7 +89,7 @@ public class JSONConfig implements Serializable {
     }
 
     /**
-     * 获取键排序规则。<br>
+     * 获取键排序规则。 <br>
      * 键排序规则，{@code null}表示不排序，不排序情况下，按照加入顺序排序
      *
      * @return 键排序规则
@@ -110,7 +110,7 @@ public class JSONConfig implements Serializable {
     }
 
     /**
-     * 设置键排序规则。<br>
+     * 设置键排序规则。 <br>
      * 键排序规则，{@code null}表示不排序，不排序情况下，按照加入顺序排序
      *
      * @param keyComparator 键排序规则

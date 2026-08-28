@@ -71,7 +71,8 @@ public class JSONConverter implements Converter<JSON> {
      * @throws ConvertException 转换失败
      */
     @SuppressWarnings("unchecked")
-    protected static <T> T jsonConvert(final Type targetType, final Object value, final JSONConfig jsonConfig) throws ConvertException {
+    protected static <T> T jsonConvert(final Type targetType, final Object value, final JSONConfig jsonConfig)
+            throws ConvertException {
         if (JSONUtil.isNull(value)) {
             return null;
         }
@@ -97,7 +98,7 @@ public class JSONConverter implements Converter<JSON> {
     }
 
     /**
-     * JSON递归转换。<br>
+     * JSON递归转换。 <br>
      * 首先尝试JDK类型转换，如果失败尝试JSON转Bean
      *
      * @param <T> 转换后的对象类型
@@ -108,7 +109,8 @@ public class JSONConverter implements Converter<JSON> {
      * @throws ConvertException 转换失败
      * @since 5.7.10
      */
-    protected static <T> T jsonToBean(final Type targetType, final Object value, final boolean ignoreError) throws ConvertException {
+    protected static <T> T jsonToBean(final Type targetType, final Object value, final boolean ignoreError)
+            throws ConvertException {
         if (JSONUtil.isNull(value)) {
             return null;
         }
@@ -125,12 +127,13 @@ public class JSONConverter implements Converter<JSON> {
             if (value instanceof JSONGetter
                     && targetType instanceof Class
                 // Map.Entry特殊处理
-                && (false == Map.Entry.class.isAssignableFrom((Class<?>)targetType)
+                && (false == Map.Entry.class.isAssignableFrom((Class<?>) targetType)
                 && BeanUtil.hasSetter((Class<?>) targetType))) {
 
                 final JSONConfig config = ((JSONGetter<?>) value).getConfig();
                 final Converter<T> converter = new BeanConverter<>(targetType,
-                        InternalJSONUtil.toCopyOptions(config).setIgnoreError(ignoreError).setFormatIfDate(config.getDateFormat()));
+                        InternalJSONUtil.toCopyOptions(config).setIgnoreError(ignoreError)
+                                .setFormatIfDate(config.getDateFormat()));
                 return converter.convertWithCheck(value, null, ignoreError);
             }
         }
@@ -144,7 +147,8 @@ public class JSONConverter implements Converter<JSON> {
                 return null;
             }
 
-            throw new ConvertException("Can not convert {} to type {}", value, ObjectUtil.defaultIfNull(TypeUtil.getClass(targetType), targetType));
+            throw new ConvertException("Can not convert {} to type {}", value,
+                    ObjectUtil.defaultIfNull(TypeUtil.getClass(targetType), targetType));
         }
 
         return targetValue;

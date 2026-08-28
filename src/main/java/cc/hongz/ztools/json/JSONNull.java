@@ -34,6 +34,16 @@ public class JSONNull implements Serializable {
     }
 
     /**
+     * 哈希值，equals 判断同一实例，哈希返回固定值。
+     *
+     * @return 哈希值
+     */
+    @Override
+    public int hashCode() {
+        return 0;
+    }
+
+    /**
      * Get the "null" string value.
      * 获得“null”字符串
      *

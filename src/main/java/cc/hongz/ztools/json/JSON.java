@@ -25,7 +25,7 @@ public interface JSON extends Cloneable, Serializable, IJSONTypeConverter {
     JSONConfig getConfig();
 
     /**
-     * 通过表达式获取JSON中嵌套的对象。<br>
+     * 通过表达式获取JSON中嵌套的对象。 <br>
      * <ol>
      * <li>.表达式，可以获取Bean对象中的属性（字段）值或者Map中key对应的值</li>
      * <li>[]表达式，可以获取集合等对象中对应index的值</li>
@@ -48,7 +48,7 @@ public interface JSON extends Cloneable, Serializable, IJSONTypeConverter {
     Object getByPath(String expression);
 
     /**
-     * 设置表达式指定位置（或field对应）的值。<br>
+     * 设置表达式指定位置（或field对应）的值。 <br>
      * 若表达式指向一个JSONArray则设置其坐标对应位置的值，若指向JSONObject则put对应key的值<br>
      * 注意：如果为JSONArray，设置值下标小于其长度，将替换原有值，否则追加新值<br>
      * <ol>
@@ -71,7 +71,7 @@ public interface JSON extends Cloneable, Serializable, IJSONTypeConverter {
     void putByPath(String expression, Object value);
 
     /**
-     * 通过表达式获取JSON中嵌套的对象。<br>
+     * 通过表达式获取JSON中嵌套的对象。 <br>
      * <ol>
      * <li>.表达式，可以获取Bean对象中的属性（字段）值或者Map中key对应的值</li>
      * <li>[]表达式，可以获取集合等对象中对应index的值</li>
@@ -98,7 +98,7 @@ public interface JSON extends Cloneable, Serializable, IJSONTypeConverter {
     <T> T getByPath(String expression, Class<T> resultType);
 
     /**
-     * 通过表达式获取JSON中嵌套的对象。<br>
+     * 通过表达式获取JSON中嵌套的对象。 <br>
      * <ol>
      * <li>.表达式，可以获取Bean对象中的属性（字段）值或者Map中key对应的值</li>
      * <li>[]表达式，可以获取集合等对象中对应index的值</li>

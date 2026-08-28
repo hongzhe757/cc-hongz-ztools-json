@@ -14,7 +14,6 @@ import cc.hongz.ztools.json.serialize.JSONWriter;
 
 import java.io.StringWriter;
 import java.io.Writer;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -23,7 +22,7 @@ import java.util.ListIterator;
 import java.util.RandomAccess;
 
 /**
- * JSON数组。<br>
+ * JSON数组。 <br>
  * JSON数组是表示中括号括住的数据表现形式<br>
  * 对应的JSON字符串格格式例如:
  *
@@ -53,7 +52,7 @@ public class JSONArray implements JSON, JSONGetter<Integer>, List<Object>, Rando
     // region Constructors
 
     /**
-     * 构造。<br>
+     * 构造。 <br>
      * 默认使用{@link ArrayList} 实现
      */
     public JSONArray() {
@@ -61,7 +60,7 @@ public class JSONArray implements JSON, JSONGetter<Integer>, List<Object>, Rando
     }
 
     /**
-     * 构造。<br>
+     * 构造。 <br>
      * 默认使用{@link ArrayList} 实现
      *
      * @param initialCapacity 初始大小
@@ -72,7 +71,7 @@ public class JSONArray implements JSON, JSONGetter<Integer>, List<Object>, Rando
     }
 
     /**
-     * 构造。<br>
+     * 构造。 <br>
      * 默认使用{@link ArrayList} 实现
      *
      * @param config JSON配置项
@@ -83,7 +82,7 @@ public class JSONArray implements JSON, JSONGetter<Integer>, List<Object>, Rando
     }
 
     /**
-     * 构造。<br>
+     * 构造。 <br>
      * 默认使用{@link ArrayList} 实现
      *
      * @param initialCapacity 初始大小
@@ -165,7 +164,8 @@ public class JSONArray implements JSON, JSONGetter<Integer>, List<Object>, Rando
      * @throws JSONException 非数组或集合
      * @since 5.8.0
      */
-    public JSONArray(final Object object, final JSONConfig jsonConfig, final Filter<Mutable<Object>> filter) throws JSONException {
+    public JSONArray(final Object object, final JSONConfig jsonConfig, final Filter<Mutable<Object>> filter)
+            throws JSONException {
         this(DEFAULT_CAPACITY, jsonConfig);
         ObjectMapper.of(object).map(this, filter);
     }
@@ -542,7 +542,7 @@ public class JSONArray implements JSON, JSONGetter<Integer>, List<Object>, Rando
     }
 
     /**
-     * 返回JSON字符串。<br>
+     * 返回JSON字符串。 <br>
      * 支持过滤器，即选择哪些字段或值不写出
      *
      * @param indentFactor 每层缩进空格数
@@ -563,7 +563,7 @@ public class JSONArray implements JSON, JSONGetter<Integer>, List<Object>, Rando
     }
 
     /**
-     * 将JSON内容写入Writer。<br>
+     * 将JSON内容写入Writer。 <br>
      * 支持过滤器，即选择哪些字段或值不写出
      *
      * @param writer       writer
@@ -574,7 +574,8 @@ public class JSONArray implements JSON, JSONGetter<Integer>, List<Object>, Rando
      * @throws JSONException JSON相关异常
      * @since 5.7.15
      */
-    public Writer write(final Writer writer, final int indentFactor, final int indent, final Filter<MutablePair<Object, Object>> filter) throws JSONException {
+    public Writer write(final Writer writer, final int indentFactor, final int indent, final
+            Filter<MutablePair<Object, Object>> filter) throws JSONException {
         final JSONWriter jsonWriter = JSONWriter.of(writer, indentFactor, indent, config).beginArray();
 
         CollUtil.forEach(this, (value, index) -> jsonWriter.writeField(new MutablePair<>(index, value), filter));

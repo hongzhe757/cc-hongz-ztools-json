@@ -12,6 +12,7 @@ import cc.hongz.ztools.json.xml.ParseConfig;
  * @see JSONXMLParser
  * @see JSONXMLSerializer
  */
+@SuppressWarnings("checkstyle:HideUtilityClassConstructor")
 public class XML {
 
     /**
@@ -76,10 +77,12 @@ public class XML {
      * 转换XML为JSONObject
      * 转换过程中一些信息可能会丢失，JSON中无法区分节点和属性，相同的节点将被处理为JSONArray。
      * Content text may be placed in a "content" member. Comments, prologs, DTDs, and {@code <[ [ ]]>} are ignored.
-     * All values are converted as strings, for 1, 01, 29.0 will not be coerced to numbers but will instead be the exact value as seen in the XML document.
+     * All values are converted as strings, for 1, 01, 29.0 will not be coerced to numbers but will instead be
+     * the exact value as seen in the XML document.
      *
      * @param string      The source string.
-     * @param keepStrings If true, then values will not be coerced into boolean or numeric values and will instead be left as strings
+     * @param keepStrings If true, then values will not be coerced into boolean or numeric values and will
+     * instead be left as strings
      * @return A JSONObject containing the structured data from the XML string.
      * @throws JSONException Thrown if there is an errors while parsing the string
      */
@@ -91,7 +94,8 @@ public class XML {
      * 转换XML为JSONObject
      * 转换过程中一些信息可能会丢失，JSON中无法区分节点和属性，相同的节点将被处理为JSONArray。
      * Content text may be placed in a "content" member. Comments, prologs, DTDs, and {@code <[ [ ]]>} are ignored.
-     * All values are converted as strings, for 1, 01, 29.0 will not be coerced to numbers but will instead be the exact value as seen in the XML document.
+     * All values are converted as strings, for 1, 01, 29.0 will not be coerced to numbers but will instead be
+     * the exact value as seen in the XML document.
      *
      * @param string      XML字符串
      * @param parseConfig XML解析选项
@@ -114,7 +118,8 @@ public class XML {
      * @throws JSONException 解析异常
      * @since 5.3.1
      */
-    public static JSONObject toJSONObject(final JSONObject jo, final String xmlStr, final boolean keepStrings) throws JSONException {
+    public static JSONObject toJSONObject(final JSONObject jo, final String xmlStr, final boolean keepStrings)
+            throws JSONException {
         JSONXMLParser.parseJSONObject(jo, xmlStr, keepStrings);
         return jo;
     }
@@ -130,7 +135,8 @@ public class XML {
      * @throws JSONException 解析异常
      * @since 5.8.25
      */
-    public static JSONObject toJSONObject(final JSONObject jo, final String xmlStr, final ParseConfig parseConfig) throws JSONException {
+    public static JSONObject toJSONObject(final JSONObject jo, final String xmlStr, final ParseConfig
+            parseConfig) throws JSONException {
         JSONXMLParser.parseJSONObject(jo, xmlStr, parseConfig);
         return jo;
     }
@@ -167,7 +173,8 @@ public class XML {
      * @return A string.
      * @throws JSONException JSON解析异常
      */
-    public static String toXml(final Object object, final String tagName, final String... contentKeys) throws JSONException {
+    public static String toXml(final Object object, final String tagName, final String... contentKeys) throws
+            JSONException {
         return JSONXMLSerializer.toXml(object, tagName, contentKeys);
     }
 }

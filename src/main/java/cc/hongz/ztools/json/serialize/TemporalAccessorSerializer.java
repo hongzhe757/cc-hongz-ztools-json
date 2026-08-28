@@ -17,7 +17,8 @@ import java.time.temporal.TemporalAccessor;
  * @author looly
  * @since 5.7.22
  */
-public class TemporalAccessorSerializer implements JSONObjectSerializer<TemporalAccessor>, JSONDeserializer<TemporalAccessor> {
+public class TemporalAccessorSerializer implements JSONObjectSerializer<TemporalAccessor>,
+        JSONDeserializer<TemporalAccessor> {
 
     private static final String YEAR_KEY = "year";
     private static final String MONTH_KEY = "month";
@@ -29,6 +30,11 @@ public class TemporalAccessorSerializer implements JSONObjectSerializer<Temporal
 
     private final Class<? extends TemporalAccessor> temporalAccessorClass;
 
+    /**
+     * 构造。
+     *
+     * @param temporalAccessorClass 时间访问器类
+     */
     public TemporalAccessorSerializer(final Class<? extends TemporalAccessor> temporalAccessorClass) {
         this.temporalAccessorClass = temporalAccessorClass;
     }
@@ -63,7 +69,8 @@ public class TemporalAccessorSerializer implements JSONObjectSerializer<Temporal
     @Override
     public TemporalAccessor deserialize(final JSON json) {
         final JSONObject jsonObject = (JSONObject) json;
-        if (LocalDate.class.equals(this.temporalAccessorClass) || LocalDateTime.class.equals(this.temporalAccessorClass)) {
+        if (LocalDate.class.equals(this.temporalAccessorClass) ||
+                LocalDateTime.class.equals(this.temporalAccessorClass)) {
             final Integer year = jsonObject.getInt(YEAR_KEY);
             Assert.notNull(year, "Field 'year' must be not null");
             Integer month = jsonObject.getInt(MONTH_KEY);
@@ -91,7 +98,8 @@ public class TemporalAccessorSerializer implements JSONObjectSerializer<Temporal
 
             return LocalDateTime.of(localDate, localTime);
         } else if (LocalTime.class.equals(this.temporalAccessorClass)) {
-            return LocalTime.of(jsonObject.getInt(HOUR_KEY), jsonObject.getInt(MINUTE_KEY), jsonObject.getInt(SECOND_KEY), jsonObject.getInt(NANO_KEY));
+            return LocalTime.of(jsonObject.getInt(HOUR_KEY), jsonObject.getInt(MINUTE_KEY),
+                    jsonObject.getInt(SECOND_KEY), jsonObject.getInt(NANO_KEY));
         }
 
         throw new JSONException("Unsupported type from JSON: {}", this.temporalAccessorClass);

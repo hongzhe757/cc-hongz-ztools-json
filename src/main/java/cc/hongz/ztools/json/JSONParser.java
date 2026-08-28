@@ -42,58 +42,58 @@ public class JSONParser {
      * @param filter     键值对过滤编辑器，可以通过实现此接口，完成解析前对键值对的过滤和修改操作，{@code null}表示不过滤
      */
     public void parseTo(final JSONObject jsonObject, final Filter<MutablePair<String, Object>> filter) {
-        final JSONTokener tokener = this.tokener;
+        final JSONTokener x = this.tokener;
 
-        if (tokener.nextClean() != '{') {
-            throw tokener.syntaxError("A JSONObject text must begin with '{'");
+        if (x.nextClean() != '{') {
+            throw x.syntaxError("A JSONObject text must begin with '{'");
         }
 
         char prev;
         char c;
         String key;
         while (true) {
-            prev = tokener.getPrevious();
-            c = tokener.nextClean();
+            prev = x.getPrevious();
+            c = x.nextClean();
             switch (c) {
                 case 0:
-                    throw tokener.syntaxError("A JSONObject text must end with '}'");
+                    throw x.syntaxError("A JSONObject text must end with '}'");
                 case '}':
                     return;
                 case '{':
                 case '[':
                     if (prev == '{') {
-                        throw tokener.syntaxError("A JSONObject can not directly nest another JSONObject or JSONArray.");
+                        throw x.syntaxError("A JSONObject can not directly nest another JSONObject or JSONArray.");
                     }
                 default:
-                    tokener.back();
-                    key = tokener.nextStringValue();
+                    x.back();
+                    key = x.nextStringValue();
             }
 
             // The key is followed by ':'.
 
-            c = tokener.nextClean();
+            c = x.nextClean();
             if (c != ':') {
-                throw tokener.syntaxError("Expected a ':' after a key");
+                throw x.syntaxError("Expected a ':' after a key");
             }
 
-            jsonObject.set(key, tokener.nextValue(), filter, jsonObject.getConfig().isCheckDuplicate());
+            jsonObject.set(key, x.nextValue(), filter, jsonObject.getConfig().isCheckDuplicate());
 
             // Pairs are separated by ','.
 
-            switch (tokener.nextClean()) {
+            switch (x.nextClean()) {
                 case ';':
                 case ',':
-                    if (tokener.nextClean() == '}') {
+                    if (x.nextClean() == '}') {
                         // issue#2380
                         // 尾后逗号（Trailing Commas），JSON中虽然不支持，但是ECMAScript 2017支持，此处做兼容。
                         return;
                     }
-                    tokener.back();
+                    x.back();
                     break;
                 case '}':
                     return;
                 default:
-                    throw tokener.syntaxError("Expected a ',' or '}'");
+                    throw x.syntaxError("Expected a ',' or '}'");
             }
         }
     }

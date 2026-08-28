@@ -14,6 +14,7 @@ import java.io.StringReader;
  *
  * @author from JSON.org
  */
+@SuppressWarnings("checkstyle:MagicNumber")
 public class JSONTokener {
 
     private long character;
@@ -101,6 +102,8 @@ public class JSONTokener {
     }
 
     /**
+     * 是否进入结尾。
+     *
      * @return 是否进入结尾
      */
     public boolean end() {
@@ -302,7 +305,8 @@ public class JSONTokener {
     }
 
     /**
-     * Get the text up but not including one of the specified delimiter characters or the end of line, whichever comes first.
+     * Get the text up but not including one of the specified delimiter characters or the end of line,
+     * whichever comes first.
      *
      * @param delimiters A set of delimiter characters.
      * @return A string, trimmed.
@@ -410,7 +414,8 @@ public class JSONTokener {
     }
 
     /**
-     * Skip characters until the next character is the requested character. If the requested character is not found, no characters are skipped. 在遇到指定字符前，跳过其它字符。如果字符未找到，则不跳过任何字符。
+     * Skip characters until the next character is the requested character. If the requested character is not
+     * found, no characters are skipped. 在遇到指定字符前，跳过其它字符。如果字符未找到，则不跳过任何字符。
      *
      * @param to 需要定位的字符
      * @return 定位的字符，如果字符未找到返回0
