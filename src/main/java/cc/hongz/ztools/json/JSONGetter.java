@@ -63,7 +63,7 @@ public interface JSONGetter<K> extends OptNullBasicTypeFromObjectGetter<K> {
     }
 
     /**
-     * 获得JSONArray对象。<br>
+     * 获得JSONArray对象。 <br>
      * 如果值为其它类型对象，尝试转换为{@link JSONArray}返回，否则抛出异常
      *
      * @param key KEY
@@ -82,7 +82,7 @@ public interface JSONGetter<K> extends OptNullBasicTypeFromObjectGetter<K> {
     }
 
     /**
-     * 获得JSONObject对象。<br>
+     * 获得JSONObject对象。 <br>
      * 如果值为其它类型对象，尝试转换为{@link JSONObject}返回，否则抛出异常
      *
      * @param key KEY
@@ -101,7 +101,7 @@ public interface JSONGetter<K> extends OptNullBasicTypeFromObjectGetter<K> {
     }
 
     /**
-     * 从JSON中直接获取Bean对象。<br>
+     * 从JSON中直接获取Bean对象。 <br>
      * 先获取JSONObject对象，然后转为Bean对象
      *
      * @param <T>      Bean类型
@@ -116,7 +116,7 @@ public interface JSONGetter<K> extends OptNullBasicTypeFromObjectGetter<K> {
     }
 
     /**
-     * 从JSON中直接获取Bean的List列表。<br>
+     * 从JSON中直接获取Bean的List列表。 <br>
      * 先获取JSONArray对象，然后转为Bean的List
      *
      * @param <T>      Bean类型
@@ -205,7 +205,7 @@ public interface JSONGetter<K> extends OptNullBasicTypeFromObjectGetter<K> {
     }
 
     /**
-     * 获取指定类型的对象。<br>
+     * 获取指定类型的对象。 <br>
      * 转换失败或抛出异常
      *
      * @param <T>  获取的对象类型

@@ -4,12 +4,13 @@ import cc.hongz.ztools.core.util.CharUtil;
 import cc.hongz.ztools.core.util.StrUtil;
 
 /**
- * JSON字符串格式化工具，用于简单格式化JSON字符串。<br>
+ * JSON字符串格式化工具，用于简单格式化JSON字符串。 <br>
  * from http://blog.csdn.net/lovelong8808/article/details/54580278
  *
  * @author looly
  * @since 3.1.2
  */
+@SuppressWarnings("checkstyle:HideUtilityClassConstructor")
 public class JSONStrFormatter {
 
     /**

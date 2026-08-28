@@ -9,4 +9,4 @@ import cc.hongz.ztools.json.JSONObject;
  * @author Looly
  */
 @FunctionalInterface
-public interface JSONObjectSerializer<V> extends JSONSerializer<JSONObject, V>{}
+public interface JSONObjectSerializer<V> extends JSONSerializer<JSONObject, V> { }

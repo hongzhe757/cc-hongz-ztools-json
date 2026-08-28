@@ -15,14 +15,13 @@ import cc.hongz.ztools.json.serialize.JSONWriter;
 
 import java.io.StringWriter;
 import java.io.Writer;
-import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Map;
 
 /**
- * JSON对象。<br>
+ * JSON对象。 <br>
  * 例：<br>
  *
  * <pre>
@@ -44,7 +43,8 @@ public class JSONObject extends MapWrapper<String, Object> implements JSON, JSON
      */
     private JSONConfig config;
 
-    // -------------------------------------------------------------------------------------------------------------------- Constructor start
+    // ------------------------------------------------------------------------------------------------------------
+    // Constructor start
 
     /**
      * 构造，初始容量为 {@link #DEFAULT_CAPACITY}，KEY无序。
@@ -133,7 +133,9 @@ public class JSONObject extends MapWrapper<String, Object> implements JSON, JSON
      * <li>value为Map，将键值对加入JSON对象</li>
      * <li>value为JSON字符串（CharSequence），使用JSONTokener解析</li>
      * <li>value为JSONTokener，直接解析</li>
-     * <li>value为普通JavaBean，如果为普通的JavaBean，调用其getters方法（getXXX或者isXXX）获得值，加入到JSON对象。例如：如果JavaBean对象中有个方法getName()，值为"张三"，获得的键值对为：name: "张三"</li>
+     * <li>value为普通JavaBean，如果为普通的JavaBean，调用其getters方法（getXXX或者isXXX）获得值，加入到JS
+     * ON对象。例如：如果JavaBean对象中有个方法getName()，值为"张三"，获得的键值对为：name:
+     * "张三"</li>
      * </ol>
      *
      * @param source          JavaBean或者Map对象或者String
@@ -150,7 +152,9 @@ public class JSONObject extends MapWrapper<String, Object> implements JSON, JSON
      * <li>value为Map，将键值对加入JSON对象</li>
      * <li>value为JSON字符串（CharSequence），使用JSONTokener解析</li>
      * <li>value为JSONTokener，直接解析</li>
-     * <li>value为普通JavaBean，如果为普通的JavaBean，调用其getters方法（getXXX或者isXXX）获得值，加入到JSON对象。例如：如果JavaBean对象中有个方法getName()，值为"张三"，获得的键值对为：name: "张三"</li>
+     * <li>value为普通JavaBean，如果为普通的JavaBean，调用其getters方法（getXXX或者isXXX）获得值，加入到JS
+     * ON对象。例如：如果JavaBean对象中有个方法getName()，值为"张三"，获得的键值对为：name:
+     * "张三"</li>
      * </ol>
      *
      * @param source          JavaBean或者Map对象或者String
@@ -174,7 +178,9 @@ public class JSONObject extends MapWrapper<String, Object> implements JSON, JSON
      * <li>value为Map，将键值对加入JSON对象</li>
      * <li>value为JSON字符串（CharSequence），使用JSONTokener解析</li>
      * <li>value为JSONTokener，直接解析</li>
-     * <li>value为普通JavaBean，如果为普通的JavaBean，调用其getters方法（getXXX或者isXXX）获得值，加入到JSON对象。例如：如果JavaBean对象中有个方法getName()，值为"张三"，获得的键值对为：name: "张三"</li>
+     * <li>value为普通JavaBean，如果为普通的JavaBean，调用其getters方法（getXXX或者isXXX）获得值，加入到JS
+     * ON对象。例如：如果JavaBean对象中有个方法getName()，值为"张三"，获得的键值对为：name:
+     * "张三"</li>
      * </ol>
      * <p>
      * 如果给定值为Map，将键值对加入JSON对象;<br>
@@ -195,7 +201,9 @@ public class JSONObject extends MapWrapper<String, Object> implements JSON, JSON
      * <li>value为Map，将键值对加入JSON对象</li>
      * <li>value为JSON字符串（CharSequence），使用JSONTokener解析</li>
      * <li>value为JSONTokener，直接解析</li>
-     * <li>value为普通JavaBean，如果为普通的JavaBean，调用其getters方法（getXXX或者isXXX）获得值，加入到JSON对象。例如：如果JavaBean对象中有个方法getName()，值为"张三"，获得的键值对为：name: "张三"</li>
+     * <li>value为普通JavaBean，如果为普通的JavaBean，调用其getters方法（getXXX或者isXXX）获得值，加入到JS
+     * ON对象。例如：如果JavaBean对象中有个方法getName()，值为"张三"，获得的键值对为：name:
+     * "张三"</li>
      * </ol>
      * <p>
      * 如果给定值为Map，将键值对加入JSON对象;<br>
@@ -265,7 +273,8 @@ public class JSONObject extends MapWrapper<String, Object> implements JSON, JSON
         this(source, JSONConfig.create());
     }
 
-    // -------------------------------------------------------------------------------------------------------------------- Constructor end
+    // ------------------------------------------------------------------------------------------------------------
+    // Constructor end
 
     @Override
     public JSONConfig getConfig() {
@@ -363,14 +372,16 @@ public class JSONObject extends MapWrapper<String, Object> implements JSON, JSON
      * 设置键值对到JSONObject中，在忽略null模式下，如果值为{@code null}，将此键移除。
      *
      * @param key            键
-     * @param value          值对象. 可以是以下类型: Boolean, Double, Integer, JSONArray, JSONObject, Long, String, or the JSONNull.NULL.
+     * @param value          值对象. 可以是以下类型: Boolean, Double, Integer, JSONArray, JSONObject, Long, String, or
+     * the JSONNull.NULL.
      * @param filter         键值对过滤编辑器，可以通过实现此接口，完成解析前对键值对的过滤和修改操作，{@code null}表示不过滤
      * @param checkDuplicate 是否检查重复键，如果为{@code true}，则出现重复键时抛出{@link JSONException}异常
      * @return this.
      * @throws JSONException 值是无穷数字抛出此异常
      * @since 5.8.0
      */
-    public JSONObject set(final String key, final Object value, final Filter<MutablePair<String, Object>> filter, final boolean checkDuplicate) throws JSONException {
+    public JSONObject set(final String key, final Object value, final Filter<MutablePair<String, Object>>
+            filter, final boolean checkDuplicate) throws JSONException {
         if (null == key) {
             return this;
         }
@@ -426,7 +437,8 @@ public class JSONObject extends MapWrapper<String, Object> implements JSON, JSON
      * @throws JSONException 值是无穷数字、键重复抛出异常
      * @since 5.8.0
      */
-    public JSONObject setOnce(final String key, final Object value, final Filter<MutablePair<String, Object>> filter) throws JSONException {
+    public JSONObject setOnce(final String key, final Object value, final Filter<MutablePair<String, Object>>
+            filter) throws JSONException {
         return set(key, value, filter, true);
     }
 
@@ -525,7 +537,7 @@ public class JSONObject extends MapWrapper<String, Object> implements JSON, JSON
     }
 
     /**
-     * 返回JSON字符串。<br>
+     * 返回JSON字符串。 <br>
      * 如果解析错误，返回{@code null}
      *
      * @return JSON字符串
@@ -536,7 +548,7 @@ public class JSONObject extends MapWrapper<String, Object> implements JSON, JSON
     }
 
     /**
-     * 返回JSON字符串。<br>
+     * 返回JSON字符串。 <br>
      * 支持过滤器，即选择哪些字段或值不写出
      *
      * @param indentFactor 每层缩进空格数
@@ -557,7 +569,7 @@ public class JSONObject extends MapWrapper<String, Object> implements JSON, JSON
     }
 
     /**
-     * 将JSON内容写入Writer。<br>
+     * 将JSON内容写入Writer。 <br>
      * 支持过滤器，即选择哪些字段或值不写出
      *
      * @param writer       writer
@@ -568,7 +580,8 @@ public class JSONObject extends MapWrapper<String, Object> implements JSON, JSON
      * @throws JSONException JSON相关异常
      * @since 5.7.15
      */
-    public Writer write(final Writer writer, final int indentFactor, final int indent, final Filter<MutablePair<Object, Object>> filter) throws JSONException {
+    public Writer write(final Writer writer, final int indentFactor, final int indent, final
+            Filter<MutablePair<Object, Object>> filter) throws JSONException {
         final JSONWriter jsonWriter = JSONWriter.of(writer, indentFactor, indent, config)
             .beginObj();
         this.forEach((key, value) -> jsonWriter.writeField(new MutablePair<>(key, value), filter));

@@ -12,7 +12,14 @@ import cc.hongz.ztools.core.util.ArrayUtil;
 import cc.hongz.ztools.core.util.CharUtil;
 import cc.hongz.ztools.core.util.NumberUtil;
 import cc.hongz.ztools.core.util.StrUtil;
-import cc.hongz.ztools.json.*;
+import cc.hongz.ztools.json.JSON;
+import cc.hongz.ztools.json.JSONArray;
+import cc.hongz.ztools.json.JSONConfig;
+import cc.hongz.ztools.json.JSONException;
+import cc.hongz.ztools.json.JSONNull;
+import cc.hongz.ztools.json.JSONObject;
+import cc.hongz.ztools.json.JSONString;
+import cc.hongz.ztools.json.JSONUtil;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -67,7 +74,8 @@ public class JSONWriter extends Writer {
      * @param config       JSON选项
      * @return JSONWriter
      */
-    public static JSONWriter of(final Writer writer, final int indentFactor, final int indent, final JSONConfig config) {
+    public static JSONWriter of(final Writer writer, final int indentFactor, final int indent, final
+            JSONConfig config) {
         return new JSONWriter(writer, indentFactor, indent, config);
     }
 
@@ -177,7 +185,8 @@ public class JSONWriter extends Writer {
      * @return this
      * @since 5.8.6
      */
-    public JSONWriter writeField(final MutablePair<Object, Object> pair, final Filter<MutablePair<Object, Object>> filter) {
+    public JSONWriter writeField(final MutablePair<Object, Object> pair, final Filter<MutablePair<Object,
+            Object>> filter) {
         if (JSONUtil.isNull(pair.getValue()) && config.isIgnoreNullValue()) {
             return this;
         }
@@ -241,19 +250,19 @@ public class JSONWriter extends Writer {
      * @return this
      */
     private JSONWriter writeObjValue(final Object value, final Filter<MutablePair<Object, Object>> filter) {
-        final int indent = indentFactor + this.indent;
+        final int childIndent = indentFactor + this.indent;
         if (value == null || value instanceof JSONNull) {
             writeRaw(JSONNull.NULL.toString());
         } else if (value instanceof JSON) {
             if (value instanceof JSONObject) {
-                ((JSONObject) value).write(writer, indentFactor, indent, filter);
+                ((JSONObject) value).write(writer, indentFactor, childIndent, filter);
             } else if (value instanceof JSONArray) {
-                ((JSONArray) value).write(writer, indentFactor, indent, filter);
+                ((JSONArray) value).write(writer, indentFactor, childIndent, filter);
             }
         } else if (value instanceof Map || value instanceof Map.Entry) {
-            new JSONObject(value).write(writer, indentFactor, indent);
+            new JSONObject(value).write(writer, indentFactor, childIndent);
         } else if (value instanceof Iterable || value instanceof Iterator || ArrayUtil.isArray(value)) {
-            new JSONArray(value).write(writer, indentFactor, indent);
+            new JSONArray(value).write(writer, indentFactor, childIndent);
         } else if (value instanceof Number) {
             // issue#IALQ0N，避免设置日期格式后writeLongAsString失效
             Number number = (Number) value;
@@ -332,7 +341,7 @@ public class JSONWriter extends Writer {
     }
 
     /**
-     * 写出字符串值，并包装引号并转义字符。<br>
+     * 写出字符串值，并包装引号并转义字符。 <br>
      * 对所有双引号做转义处理（使用双反斜杠做转义）<br>
      * 为了能在HTML中较好的显示，会将&lt;/转义为&lt;\/<br>
      * JSON字符串中不能包含控制字符和未经转义的引号和反斜杠

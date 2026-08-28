@@ -11,12 +11,13 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 全局的序列化和反序列化器映射。<br>
+ * 全局的序列化和反序列化器映射。 <br>
  * 在JSON和Java对象转换过程中，优先使用注册于此处的自定义转换
  *
  * @author Looly
  *
  */
+@SuppressWarnings("checkstyle:HideUtilityClassConstructor")
 public class GlobalSerializeMapping {
 
     private static Map<Type, JSONSerializer<? extends JSON, ?>> serializerMap;
@@ -65,7 +66,7 @@ public class GlobalSerializeMapping {
      * @param type 对象类型
      * @param serializer 序列化器实现
      */
-    synchronized private static void putInternal(final Type type, final JSONSerializer<? extends JSON, ?> serializer) {
+    private static synchronized void putInternal(final Type type, final JSONSerializer<? extends JSON, ?> serializer) {
         if (null == serializerMap) {
             serializerMap = new SafeConcurrentHashMap<>();
         }
@@ -78,7 +79,7 @@ public class GlobalSerializeMapping {
      * @param type 对象类型
      * @param deserializer 反序列化器实现
      */
-    synchronized public static void put(final Type type, final JSONDeserializer<?> deserializer) {
+    public static synchronized void put(final Type type, final JSONDeserializer<?> deserializer) {
         if (null == deserializerMap) {
             deserializerMap = new ConcurrentHashMap<>();
         }

@@ -3,7 +3,7 @@ package cc.hongz.ztools.json;
 import cc.hongz.ztools.core.bean.BeanUtil;
 
 /**
- * JSON支持。<br>
+ * JSON支持。 <br>
  * 继承此类实现实体类与JSON的相互转换
  *
  * @author Looly
@@ -31,6 +31,8 @@ public class JSONSupport implements JSONString, JSONBeanParser<JSON> {
     }
 
     /**
+     * 转换为JSON对象。
+     *
      * @return JSON对象
      */
     public JSONObject toJSON() {
