@@ -1,14 +1,18 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import lombok.Data;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@DisplayName("Pr1431 测试")
 public class Pr1431Test {
 	@SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
 	@Test
+    @DisplayName("过滤")
 	void filterTest() {
 		UserC user = new UserC();
 		user.setId(1);

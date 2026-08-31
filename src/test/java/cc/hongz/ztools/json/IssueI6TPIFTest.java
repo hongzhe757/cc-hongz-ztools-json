@@ -12,16 +12,20 @@
 
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import lombok.Data;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
+@DisplayName("IssueI6TPIF 测试")
 public class IssueI6TPIFTest {
 
 	@Test
 	@Disabled
+    @DisplayName("转String")
 	public void toStringTest() {
 		TestVo test = new TestVo();
 		test.setBigValue(new BigDecimal("1234567899876543210.000000000000000000000000001"));

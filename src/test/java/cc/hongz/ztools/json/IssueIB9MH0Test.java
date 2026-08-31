@@ -1,13 +1,17 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.json.serialize.GlobalSerializeMapping;
 import cc.hongz.ztools.json.serialize.JSONObjectSerializer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("IssueIB9MH0 测试")
 public class IssueIB9MH0Test {
 
 	@Test
+    @DisplayName("解析")
 	void parseTest() {
 		GlobalSerializeMapping.put(TabTypeEnum.class, (JSONObjectSerializer<TabTypeEnum>) (json, bean) -> json.set("code", bean.getCode())
 			.set("title", bean.getTitle()));

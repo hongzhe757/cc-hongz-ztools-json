@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import lombok.Data;
 import lombok.experimental.Accessors;
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,6 +11,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@DisplayName("Issues1881 测试")
 public class Issues1881Test {
 
 	@Accessors(chain = true)
@@ -26,6 +29,7 @@ public class Issues1881Test {
 	}
 
 	@Test
+    @DisplayName("解析")
 	public void parseTest(){
 		List<ThingsHolderContactVO> holderContactVOList = new ArrayList<>();
 		holderContactVOList.add(new ThingsHolderContactVO().setId(1L).setName("1"));

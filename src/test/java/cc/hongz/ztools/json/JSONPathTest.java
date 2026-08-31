@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import cc.hongz.ztools.core.lang.TypeReference;
@@ -13,9 +15,11 @@ import java.util.List;
  * @author looly
  *
  */
+@DisplayName("JSONPath 测试")
 public class JSONPathTest {
 
 	@Test
+    @DisplayName("获取按路径")
 	public void getByPathTest() {
 		String json = "[{\"id\":\"1\",\"name\":\"xingming\"},{\"id\":\"2\",\"name\":\"mingzi\"}]";
 		Object value = JSONUtil.parseArray(json).getByPath("[0].name");
@@ -25,6 +29,7 @@ public class JSONPathTest {
 	}
 
 	@Test
+    @DisplayName("获取按路径")
 	public void getByPathTest2(){
 		String str = "{'accountId':111}";
 		JSON json = JSONUtil.parse(str);
@@ -33,6 +38,7 @@ public class JSONPathTest {
 	}
 
 	@Test
+    @DisplayName("获取按路径")
 	public void getByPathTest3(){
 		String str = "[{'accountId':1},{'accountId':2},{'accountId':3}]";
 		JSON json = JSONUtil.parse(str);
@@ -52,6 +58,7 @@ public class JSONPathTest {
 	}
 
 	@Test
+    @DisplayName("获取按路径带Wildcard")
 	public void getByPathWithWildcardTest() {
 		// 测试通配符 [*] 语法
 		JSONObject root = new JSONObject()

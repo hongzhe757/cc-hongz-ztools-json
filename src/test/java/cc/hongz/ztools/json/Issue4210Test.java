@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.exceptions.InvocationTargetRuntimeException;
 import cc.hongz.ztools.core.lang.Console;
 import cc.hongz.ztools.core.lang.ObjectId;
@@ -11,9 +13,11 @@ import org.junit.jupiter.api.Test;
 
 import java.io.Serializable;
 
+@DisplayName("Issue4210 测试")
 public class Issue4210Test {
 
 	@Test
+    @DisplayName("设置值")
 	void setValueTest(){
 		final JSONObject jsonObject = new JSONObject();
 

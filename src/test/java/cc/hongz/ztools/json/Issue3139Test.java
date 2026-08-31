@@ -12,6 +12,8 @@
 
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.util.XmlUtil;
 import lombok.Data;
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,9 +21,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+@DisplayName("Issue3139 测试")
 public class Issue3139Test {
 
 	@Test
+    @DisplayName("转Bean")
 	public void toBeanTest() {
 		final String xml = "<r>\n" +
 			"  <c>\n" +

@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import lombok.Data;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
@@ -11,6 +13,7 @@ import java.time.LocalDateTime;
  */
 public class IssueI1F8M2 {
 	@Test
+    @DisplayName("转Bean")
 	public void toBeanTest() {
 		String jsonStr = "{\"eventType\":\"fee\",\"fwdAlertingTime\":\"2020-04-22 16:34:13\",\"fwdAnswerTime\":\"\"}";
 		Param param = JSONUtil.toBean(jsonStr, Param.class);

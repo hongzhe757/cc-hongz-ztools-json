@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json.test.bean.report;
 
+import org.junit.jupiter.api.DisplayName;
+
 import java.util.Collection;
 
 /**

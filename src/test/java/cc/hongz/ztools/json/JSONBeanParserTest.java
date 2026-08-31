@@ -1,12 +1,16 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import lombok.Data;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("JSONBeanParser 测试")
 public class JSONBeanParserTest {
 
 	@Test
+    @DisplayName("解析")
 	public void parseTest(){
 		String jsonStr = "{\"customName\": \"customValue\", \"customAddress\": \"customAddressValue\"}";
 		final TestBean testBean = JSONUtil.toBean(jsonStr, TestBean.class);

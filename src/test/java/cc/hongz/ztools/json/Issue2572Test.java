@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.lang.TypeReference;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
@@ -11,9 +13,11 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+@DisplayName("Issue2572 测试")
 public class Issue2572Test {
 
 	@Test
+    @DisplayName("putDayOfWeek")
 	public void putDayOfWeekTest(){
 		final Set<DayOfWeek> weeks = new HashSet<>();
 		weeks.add(DayOfWeek.MONDAY);
@@ -27,6 +31,7 @@ public class Issue2572Test {
 	}
 
 	@Test
+    @DisplayName("putMonth")
 	public void putMonthTest(){
 		final Set<Month> months = new HashSet<>();
 		months.add(Month.DECEMBER);
@@ -40,6 +45,7 @@ public class Issue2572Test {
 	}
 
 	@Test
+    @DisplayName("putMonthDay")
 	public void putMonthDayTest(){
 		final Set<MonthDay> monthDays = new HashSet<>();
 		monthDays.add(MonthDay.of(Month.DECEMBER, 1));

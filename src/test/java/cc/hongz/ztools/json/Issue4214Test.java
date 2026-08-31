@@ -1,13 +1,17 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import lombok.Data;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@DisplayName("Issue4214 测试")
 public class Issue4214Test {
 
 	@Test
+    @DisplayName("转Bean")
 	void toBeanTest(){
 		LicenseInfo licenseInfo = new LicenseInfo();
 		licenseInfo.setAuthTypeEnum(AuthTypeEnum.OFFICIAL);

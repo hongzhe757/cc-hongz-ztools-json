@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.annotation.Alias;
 import cc.hongz.ztools.core.annotation.PropIgnore;
 import cc.hongz.ztools.core.collection.CollUtil;
@@ -34,10 +36,12 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author Looly
  */
+@DisplayName("JSONObject 测试")
 public class JSONObjectTest {
 
 	@Test
 	@Disabled
+    @DisplayName("转String")
 	public void toStringTest() {
 		final String str = "{\"code\": 500, \"data\":null}";
 		final JSONObject jsonObject = new JSONObject(str);
@@ -47,6 +51,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("转String")
 	public void toStringTest2() {
 		final String str = "{\"test\":\"关于开展2018年度“文明集体”、“文明职工”评选表彰活动的通知\"}";
 		//noinspection MismatchedQueryAndUpdateOfCollection
@@ -58,6 +63,7 @@ public class JSONObjectTest {
 	 * 测试JSON中自定义日期格式输出正确性
 	 */
 	@Test
+    @DisplayName("转String")
 	public void toStringTest3() {
 		final JSONObject json = Objects.requireNonNull(JSONUtil.createObj()//
 				.set("dateTime", DateUtil.parse("2019-05-02 22:12:01")))//
@@ -66,6 +72,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("转String带日期")
 	public void toStringWithDateTest() {
 		JSONObject json = JSONUtil.createObj().set("date", DateUtil.parse("2019-05-08 19:18:21"));
 		assert json != null;
@@ -77,6 +84,7 @@ public class JSONObjectTest {
 
 
 	@Test
+    @DisplayName("putAll")
 	public void putAllTest() {
 		final JSONObject json1 = JSONUtil.createObj()
 			.set("a", "value1")
@@ -97,6 +105,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("解析String")
 	public void parseStringTest() {
 		final String jsonStr = "{\"b\":\"value2\",\"c\":\"value3\",\"a\":\"value1\", \"d\": true, \"e\": null}";
 		final JSONObject jsonObject = JSONUtil.parseObj(jsonStr);
@@ -110,6 +119,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("解析String")
 	public void parseStringTest2() {
 		final String jsonStr = "{\"file_name\":\"RMM20180127009_731.000\",\"error_data\":\"201121151350701001252500000032 18973908335 18973908335 13601893517 201711211700152017112115135420171121 6594000000010100000000000000000000000043190101701001910072 100001100 \",\"error_code\":\"F140\",\"error_info\":\"最早发送时间格式错误，该字段可以为空，当不为空时正确填写格式为“YYYYMMDDHHMISS”\",\"app_name\":\"inter-pre-check\"}";
 		//noinspection MismatchedQueryAndUpdateOfCollection
@@ -119,6 +129,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("解析String")
 	public void parseStringTest3() {
 		final String jsonStr = "{\"test\":\"体”、“文\"}";
 		//noinspection MismatchedQueryAndUpdateOfCollection
@@ -127,6 +138,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("解析String")
 	public void parseStringTest4() {
 		final String jsonStr = "{'msg':'这里还没有内容','data':{'cards':[]},'ok':0}";
 		//noinspection MismatchedQueryAndUpdateOfCollection
@@ -136,6 +148,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("解析字节")
 	public void parseBytesTest() {
 		final String jsonStr = "{'msg':'这里还没有内容','data':{'cards':[]},'ok':0}";
 		//noinspection MismatchedQueryAndUpdateOfCollection
@@ -145,6 +158,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("解析Reader")
 	public void parseReaderTest() {
 		final String jsonStr = "{'msg':'这里还没有内容','data':{'cards':[]},'ok':0}";
 		final StringReader stringReader = new StringReader(jsonStr);
@@ -156,6 +170,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("解析InputStream")
 	public void parseInputStreamTest() {
 		final String jsonStr = "{'msg':'这里还没有内容','data':{'cards':[]},'ok':0}";
 		final ByteArrayInputStream in = new ByteArrayInputStream(jsonStr.getBytes(StandardCharsets.UTF_8));
@@ -168,6 +183,7 @@ public class JSONObjectTest {
 
 	@Test
 	@Disabled
+    @DisplayName("解析String带Bom")
 	public void parseStringWithBomTest() {
 		final String jsonStr = FileUtil.readUtf8String("f:/test/jsontest.txt");
 		final JSONObject json = new JSONObject(jsonStr);
@@ -177,6 +193,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("解析String带Slash")
 	public void parseStringWithSlashTest() {
 		//在5.3.2之前，</div>中的/会被转义，修复此bug的单元测试
 		final String jsonStr = "{\"a\":\"<div>aaa</div>\"}";
@@ -187,6 +204,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("转Bean")
 	public void toBeanTest() {
 		final JSONObject subJson = JSONUtil.createObj().set("value1", "strValue1").set("value2", "234");
 		final JSONObject json = JSONUtil.createObj().set("strValue", "strTest").set("intValue", 123)
@@ -207,6 +225,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("转Bean空字符串")
 	public void toBeanNullStrTest() {
 		final JSONObject json = JSONUtil.createObj(JSONConfig.create().setIgnoreError(true))//
 			.set("strValue", "null")//
@@ -223,6 +242,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("转Bean")
 	public void toBeanTest2() {
 		final UserA userA = new UserA();
 		userA.setA("A user");
@@ -239,6 +259,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("转Bean带空")
 	public void toBeanWithNullTest() {
 		final String jsonStr = "{'data':{'userName':'ak','password': null}}";
 		final UserWithMap user = JSONUtil.toBean(JSONUtil.parseObj(jsonStr), UserWithMap.class);
@@ -246,6 +267,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("转Bean")
 	public void toBeanTest4() {
 		final String json = "{\"data\":{\"b\": \"c\"}}";
 
@@ -254,6 +276,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("转Bean")
 	public void toBeanTest5() {
 		final String readUtf8Str = ResourceUtil.readUtf8Str("suiteReport.json");
 		final JSONObject json = JSONUtil.parseObj(readUtf8Str);
@@ -274,6 +297,7 @@ public class JSONObjectTest {
 	 * 在JSON转Bean过程中，Bean中字段如果为父类定义的泛型类型，则应正确转换，此方法用于测试这类情况
 	 */
 	@Test
+    @DisplayName("转Bean")
 	public void toBeanTest6() {
 		final JSONObject json = JSONUtil.createObj()
 			.set("targetUrl", "http://test.com")
@@ -297,6 +321,7 @@ public class JSONObjectTest {
 	 * 此处用于测试获取泛型类型实际类型错误导致的空指针问题
 	 */
 	@Test
+    @DisplayName("转Bean")
 	public void toBeanTest7() {
 		final String jsonStr = " {\"result\":{\"phone\":\"15926297342\",\"appKey\":\"e1ie12e1ewsdqw1\"," +
 			"\"secret\":\"dsadadqwdqs121d1e2\",\"message\":\"hello world\"},\"code\":100,\"" +
@@ -306,6 +331,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("解析Bean")
 	public void parseBeanTest() {
 		final UserA userA = new UserA();
 		userA.setName("nameTest");
@@ -319,6 +345,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("解析Bean")
 	public void parseBeanTest2() {
 		final TestBean bean = new TestBean();
 		bean.setDoubleValue(111.1);
@@ -336,6 +363,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("解析Bean")
 	public void parseBeanTest3() {
 		final JSONObject json = JSONUtil.createObj()
 			.set("code", 22)
@@ -348,6 +376,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("BeanTrans")
 	public void beanTransTest() {
 		final UserA userA = new UserA();
 		userA.setA("A user");
@@ -362,6 +391,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("BeanTrans")
 	public void beanTransTest2() {
 		final UserA userA = new UserA();
 		userA.setA("A user");
@@ -377,6 +407,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("BeanTrans")
 	public void beanTransTest3() {
 		final JSONObject userAJson = JSONUtil.createObj()
 			.set("a", "AValue")
@@ -387,6 +418,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("解析FromBean")
 	public void parseFromBeanTest() {
 		final UserA userA = new UserA();
 		userA.setA(null);
@@ -402,6 +434,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("特殊字符")
 	public void specialCharTest() {
 		final String json = "{\"pattern\": \"[abc]\b\u2001\", \"pattern2Json\": {\"patternText\": \"[ab]\\b\"}}";
 		final JSONObject obj = JSONUtil.parseObj(json);
@@ -410,6 +443,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("获取字符串")
 	public void getStrTest() {
 		final String json = "{\"name\": \"yyb\\nbbb\"}";
 		final JSONObject jsonObject = JSONUtil.parseObj(json);
@@ -424,6 +458,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("alias")
 	public void aliasTest() {
 		final BeanWithAlias beanWithAlias = new BeanWithAlias();
 		beanWithAlias.setValue1("张三");
@@ -442,6 +477,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("设置日期格式化")
 	public void setDateFormatTest() {
 		final JSONConfig jsonConfig = JSONConfig.create();
 		jsonConfig.setDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -454,6 +490,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("设置日期格式化")
 	public void setDateFormatTest2() {
 		final JSONConfig jsonConfig = JSONConfig.create();
 		jsonConfig.setDateFormat("yyyy#MM#dd");
@@ -474,6 +511,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("设置Custom日期格式化")
 	public void setCustomDateFormatTest() {
 		final JSONConfig jsonConfig = JSONConfig.create();
 		jsonConfig.setDateFormat("#sss");
@@ -494,6 +532,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("获取Timestamp")
 	public void getTimestampTest() {
 		final String timeStr = "1970-01-01 00:00:00";
 		final JSONObject jsonObject = JSONUtil.createObj().set("time", timeStr);
@@ -540,6 +579,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("解析BeanSame名称")
 	public void parseBeanSameNameTest() {
 		final SameNameBean sameNameBean = new SameNameBean();
 		final JSONObject parse = JSONUtil.parseObj(sameNameBean);
@@ -577,6 +617,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("设置条目")
 	public void setEntryTest() {
 		final HashMap<String, String> of = MapUtil.of("test", "testValue");
 		final Set<Map.Entry<String, String>> entries = of.entrySet();
@@ -587,6 +628,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("createJSONObject")
 	public void createJSONObjectTest() {
 		assertThrows(JSONException.class, () -> {
 			// 集合类不支持转为JSONObject
@@ -595,6 +637,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("float")
 	public void floatTest() {
 		final Map<String, Object> map = new HashMap<>();
 		map.put("c", 2.0F);
@@ -604,6 +647,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("accumulate")
 	public void accumulateTest() {
 		final JSONObject jsonObject = JSONUtil.createObj().accumulate("key1", "value1");
 		assertEquals("{\"key1\":\"value1\"}", jsonObject.toString());
@@ -616,6 +660,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("put按路径")
 	public void putByPathTest() {
 		final JSONObject json = new JSONObject();
 		json.putByPath("aa.bb", "BB");
@@ -624,6 +669,7 @@ public class JSONObjectTest {
 
 
 	@Test
+    @DisplayName("bigDecimal")
 	public void bigDecimalTest() {
 		final String jsonStr = "{\"orderId\":\"1704747698891333662002277\"}";
 		final BigDecimalBean bigDecimalBean = JSONUtil.toBean(jsonStr, BigDecimalBean.class);
@@ -637,6 +683,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("过滤包含")
 	public void filterIncludeTest() {
 		final JSONObject json1 = JSONUtil.createObj(JSONConfig.create())
 			.set("a", "value1")
@@ -649,6 +696,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("过滤排除")
 	public void filterExcludeTest() {
 		final JSONObject json1 = JSONUtil.createObj(JSONConfig.create())
 			.set("a", "value1")
@@ -661,6 +709,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("编辑")
 	public void editTest() {
 		final JSONObject json1 = JSONUtil.createObj(JSONConfig.create())
 			.set("a", "value1")
@@ -681,6 +730,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("转UnderLine大小写")
 	public void toUnderLineCaseTest() {
 		final JSONObject json1 = JSONUtil.createObj(JSONConfig.create())
 			.set("aKey", "value1")
@@ -696,6 +746,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("空转空")
 	public void nullToEmptyTest() {
 		final JSONObject json1 = JSONUtil.createObj(JSONConfig.create().setIgnoreNullValue(false))
 			.set("a", null)
@@ -709,6 +760,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("解析过滤")
 	public void parseFilterTest() {
 		final String jsonStr = "{\"b\":\"value2\",\"c\":\"value3\",\"a\":\"value1\", \"d\": true, \"e\": null}";
 		//noinspection MismatchedQueryAndUpdateOfCollection
@@ -718,6 +770,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("解析过滤编辑")
 	public void parseFilterEditTest() {
 		final String jsonStr = "{\"b\":\"value2\",\"c\":\"value3\",\"a\":\"value1\", \"d\": true, \"e\": null}";
 		//noinspection MismatchedQueryAndUpdateOfCollection
@@ -731,6 +784,7 @@ public class JSONObjectTest {
 	}
 
 	@Test
+    @DisplayName("issue3844")
 	void issue3844Test(){
 		String camelCaseStr = "{\"userAge\":\"123\"}";
 		final JSONObject entries = new JSONObject(camelCaseStr, null, (pair) -> {

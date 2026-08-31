@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import lombok.Data;
 import org.junit.jupiter.api.Test;
 
@@ -9,9 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  * https://github.com/chinabugotech/hutool/issues/3506
  */
+@DisplayName("Issue3506 测试")
 public class Issue3506Test {
 
 	@Test
+    @DisplayName("test3506")
 	public void test3506() {
 		Languages languages = new Languages();
 		languages.setLanguageType(Java.class);

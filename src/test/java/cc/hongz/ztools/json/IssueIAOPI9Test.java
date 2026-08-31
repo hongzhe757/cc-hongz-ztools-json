@@ -1,11 +1,15 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import lombok.Data;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("IssueIAOPI9 测试")
 public class IssueIAOPI9Test {
 	@Test
+    @DisplayName("转Bean")
 	void toBeanTest() {
 		String jsonStr = "{\"chatCommandType\":\"CHAT_MSG\"}";
 		ChatPublicAppReceiveMq mqChatRequest = JSONUtil.toBean(jsonStr, ChatPublicAppReceiveMq.class);

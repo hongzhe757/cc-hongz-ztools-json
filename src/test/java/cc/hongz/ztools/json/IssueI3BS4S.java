@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.bean.BeanUtil;
 import lombok.Data;
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,6 +15,7 @@ import java.time.LocalDateTime;
 public class IssueI3BS4S {
 
 	@Test
+    @DisplayName("转Bean")
 	public void toBeanTest(){
 		String jsonStr = "{date: '2021-03-17T06:31:33.99'}";
 		final Bean1 bean1 = new Bean1();

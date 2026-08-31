@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.collection.CollectionUtil;
 import cc.hongz.ztools.core.collection.ListUtil;
 import cc.hongz.ztools.core.date.DateUtil;
@@ -19,12 +21,14 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("JSONUtil 测试")
 public class JSONUtilTest {
 
 	/**
 	 * 出现语法错误时报错，检查解析\x字符时是否会导致死循环异常
 	 */
 	@Test
+    @DisplayName("解析")
 	public void parseTest() {
 		assertThrows(JSONException.class, () -> {
 			final JSONArray jsonArray = JSONUtil.parseArray("[{\"a\":\"a\\x]");
@@ -36,6 +40,7 @@ public class JSONUtilTest {
 	 * 数字解析为JSONArray报错
 	 */
 	@Test
+    @DisplayName("解析Number转JSON数组")
 	public void parseNumberToJSONArrayTest2() {
 		final JSONArray json = JSONUtil.parseArray(123L,
 			JSONConfig.create().setIgnoreError(true));
@@ -46,6 +51,7 @@ public class JSONUtilTest {
 	 * 数字解析为JSONArray报错
 	 */
 	@Test
+    @DisplayName("解析Number")
 	public void parseNumberTest() {
 		assertThrows(JSONException.class, () -> {
 			final JSONArray json = JSONUtil.parseArray(123L);
@@ -57,12 +63,14 @@ public class JSONUtilTest {
 	 * 数字解析为JSONObject忽略
 	 */
 	@Test
+    @DisplayName("解析Number")
 	public void parseNumberTest2() {
 		final JSONObject json = JSONUtil.parseObj(123L, JSONConfig.create().setIgnoreError(true));
 		assertEquals(new JSONObject(), json);
 	}
 
 	@Test
+    @DisplayName("转JSON字符串")
 	public void toJsonStrTest() {
 		final UserA a1 = new UserA();
 		a1.setA("aaaa");
@@ -84,6 +92,7 @@ public class JSONUtilTest {
 	}
 
 	@Test
+    @DisplayName("转JSON字符串")
 	public void toJsonStrTest2() {
 		final Map<String, Object> model = new HashMap<>();
 		model.put("mobile", "17610836523");
@@ -102,6 +111,7 @@ public class JSONUtilTest {
 	}
 
 	@Test
+    @DisplayName("转JSON字符串")
 	public void toJsonStrTest3() {
 		// 验证某个字段为JSON字符串时转义是否规范
 		final JSONObject object = new JSONObject(true);
@@ -121,6 +131,7 @@ public class JSONUtilTest {
 	}
 
 	@Test
+    @DisplayName("转JSON字符串From排序")
 	public void toJsonStrFromSortedTest() {
 		final SortedMap<Object, Object> sortedMap = new TreeMap<Object, Object>() {
 			private static final long serialVersionUID = 1L;
@@ -139,6 +150,7 @@ public class JSONUtilTest {
 	 * 泛型多层嵌套测试
 	 */
 	@Test
+    @DisplayName("转Bean")
 	public void toBeanTest() {
 		final String json = "{\"ADT\":[[{\"BookingCode\":[\"N\",\"N\"]}]]}";
 
@@ -147,6 +159,7 @@ public class JSONUtilTest {
 	}
 
 	@Test
+    @DisplayName("转Bean")
 	public void toBeanTest2() {
 		// 测试JSONObject转为Bean中字符串字段的情况
 		final String json = "{\"id\":123,\"name\":\"张三\",\"prop\":{\"gender\":\"男\", \"age\":18}}";
@@ -160,6 +173,7 @@ public class JSONUtilTest {
 	}
 
 	@Test
+    @DisplayName("获取字符串")
 	public void getStrTest() {
 		final String html = "{\"name\":\"Something must have been changed since you leave\"}";
 		final JSONObject jsonObject = JSONUtil.parseObj(html);
@@ -167,6 +181,7 @@ public class JSONUtilTest {
 	}
 
 	@Test
+    @DisplayName("获取字符串")
 	public void getStrTest2() {
 		final String html = "{\"name\":\"Something\\u00a0must have been changed since you leave\"}";
 		final JSONObject jsonObject = JSONUtil.parseObj(html);
@@ -174,6 +189,7 @@ public class JSONUtilTest {
 	}
 
 	@Test
+    @DisplayName("解析FromXML")
 	public void parseFromXmlTest() {
 		final String s = "<sfzh>640102197312070614</sfzh><sfz>640102197312070614X</sfz><name>aa</name><gender>1</gender>";
 		final JSONObject json = JSONUtil.parseFromXml(s);
@@ -184,6 +200,7 @@ public class JSONUtilTest {
 	}
 
 	@Test
+    @DisplayName("double")
 	public void doubleTest() {
 		final String json = "{\"test\": 12.00}";
 		final JSONObject jsonObject = JSONUtil.parseObj(json);
@@ -192,6 +209,7 @@ public class JSONUtilTest {
 	}
 
 	@Test
+    @DisplayName("custom值")
 	public void customValueTest() {
 		final JSONObject jsonObject = JSONUtil.createObj()
 			.set("test2", (JSONString) () -> NumberUtil.decimalFormat("#.0", 12.00D));
@@ -200,6 +218,7 @@ public class JSONUtilTest {
 	}
 
 	@Test
+    @DisplayName("设置去除末尾零")
 	public void setStripTrailingZerosTest() {
 		// 默认去除多余的0
 		final JSONObject jsonObjectDefault = JSONUtil.createObj()
@@ -217,6 +236,7 @@ public class JSONUtilTest {
 	}
 
 	@Test
+    @DisplayName("解析对象")
 	public void parseObjTest() {
 		// 测试转义
 		final JSONObject jsonObject = JSONUtil.parseObj("{\n" +
@@ -227,6 +247,7 @@ public class JSONUtilTest {
 	}
 
 	@Test
+    @DisplayName("sqlException")
 	public void sqlExceptionTest() {
 		//https://github.com/chinabugotech/hutool/issues/1399
 		// SQLException实现了Iterable接口，默认是遍历之，会栈溢出，修正后只返回string
@@ -235,6 +256,7 @@ public class JSONUtilTest {
 	}
 
 	@Test
+    @DisplayName("解析BigNumber")
 	public void parseBigNumberTest() {
 		// 科学计数法使用BigDecimal处理，默认输出非科学计数形式
 		final String str = "{\"test\":100000054128897953e4}";
@@ -242,6 +264,7 @@ public class JSONUtilTest {
 	}
 
 	@Test
+    @DisplayName("转XML")
 	public void toXmlTest() {
 		final JSONObject obj = JSONUtil.createObj();
 		obj.set("key1", "v1")
@@ -251,6 +274,7 @@ public class JSONUtilTest {
 	}
 
 	@Test
+    @DisplayName("duplicateKeyFalse")
 	public void duplicateKeyFalseTest() {
 		final String str = "{id:123, name:\"张三\", name:\"李四\"}";
 
@@ -259,6 +283,7 @@ public class JSONUtilTest {
 	}
 
 	@Test
+    @DisplayName("duplicateKeyTrue")
 	public void duplicateKeyTrueTest() {
 		assertThrows(JSONException.class, () -> {
 			final String str = "{id:123, name:\"张三\", name:\"李四\"}";
@@ -272,6 +297,7 @@ public class JSONUtilTest {
 	 * 测试普通数组转JSONArray时是否异常, 尤其是byte[]数组, 可能是普通的byte[]数组, 也可能是二进制流
 	 */
 	@Test
+    @DisplayName("数组Entity")
 	public void testArrayEntity() {
 		final String jsonStr = JSONUtil.toJsonStr(new ArrayEntity());
 		assertEquals("{\"a\":[],\"b\":[0],\"c\":[],\"d\":[],\"e\":[]}", jsonStr);
@@ -287,6 +313,7 @@ public class JSONUtilTest {
 	}
 
 	@Test
+    @DisplayName("issue3540")
 	public void issue3540Test() {
 		Long userId = 10101010L;
 		final String jsonStr = JSONUtil.toJsonStr(userId);
@@ -297,6 +324,7 @@ public class JSONUtilTest {
 	 * 类型引用数组泛型丢失
 	 */
 	@Test
+    @DisplayName("issue3873")
 	public void issue3873Test() {
 		String json = "{\"results\":[{\"uid\":\"1\"}],\"offset\":0,\"limit\":20,\"total\":0}";
 		Results<Index> deserialize = JSONUtil.toBean(json, (new TypeReference<Results<Index>>() {

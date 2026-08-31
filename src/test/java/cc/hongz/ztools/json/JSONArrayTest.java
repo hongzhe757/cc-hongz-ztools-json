@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.collection.CollUtil;
 import cc.hongz.ztools.core.collection.ListUtil;
 import cc.hongz.ztools.core.convert.ConvertException;
@@ -25,9 +27,11 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author Looly
  */
+@DisplayName("JSONArray 测试")
 public class JSONArrayTest {
 
 	@Test()
+    @DisplayName("createJSON数组FromJSONObject")
 	public void createJSONArrayFromJSONObjectTest() {
 		// JSONObject实现了Iterable接口，可以转换为JSONArray
 		final JSONObject jsonObject = new JSONObject();
@@ -42,6 +46,7 @@ public class JSONArrayTest {
 	}
 
 	@Test
+    @DisplayName("add空")
 	public void addNullTest() {
 		final List<String> aaa = ListUtil.of("aaa", null);
 		String jsonStr = JSONUtil.toJsonStr(JSONUtil.parse(aaa,
@@ -50,6 +55,7 @@ public class JSONArrayTest {
 	}
 
 	@Test
+    @DisplayName("add")
 	public void addTest() {
 		// 方法1
 		JSONArray array = JSONUtil.createArray();
@@ -63,6 +69,7 @@ public class JSONArrayTest {
 	}
 
 	@Test
+    @DisplayName("解析")
 	public void parseTest() {
 		String jsonStr = "[\"value1\", \"value2\", \"value3\"]";
 		JSONArray array = JSONUtil.parseArray(jsonStr);
@@ -70,6 +77,7 @@ public class JSONArrayTest {
 	}
 
 	@Test
+    @DisplayName("解析带空")
 	public void parseWithNullTest() {
 		String jsonStr = "[{\"grep\":\"4.8\",\"result\":\"右\"},{\"grep\":\"4.8\",\"result\":null}]";
 		JSONArray jsonArray = JSONUtil.parseArray(jsonStr);
@@ -81,6 +89,7 @@ public class JSONArrayTest {
 	}
 
 	@Test
+    @DisplayName("解析File")
 	public void parseFileTest() {
 		JSONArray array = JSONUtil.readJSONArray(FileUtil.file("exam_test.json"), CharsetUtil.CHARSET_UTF_8);
 
@@ -90,6 +99,7 @@ public class JSONArrayTest {
 	}
 
 	@Test
+    @DisplayName("解析BeanList")
 	public void parseBeanListTest() {
 		KeyBean b1 = new KeyBean();
 		b1.setAkey("aValue1");
@@ -106,6 +116,7 @@ public class JSONArrayTest {
 	}
 
 	@Test
+    @DisplayName("转List")
 	public void toListTest() {
 		String jsonStr = FileUtil.readString("exam_test.json", CharsetUtil.CHARSET_UTF_8);
 		JSONArray array = JSONUtil.parseArray(jsonStr);
@@ -116,6 +127,7 @@ public class JSONArrayTest {
 	}
 
 	@Test
+    @DisplayName("转List")
 	public void toListTest2() {
 		String jsonArr = "[{\"id\":111,\"name\":\"test1\"},{\"id\":112,\"name\":\"test2\"}]";
 
@@ -133,6 +145,7 @@ public class JSONArrayTest {
 	}
 
 	@Test
+    @DisplayName("转字典List")
 	public void toDictListTest() {
 		String jsonArr = "[{\"id\":111,\"name\":\"test1\"},{\"id\":112,\"name\":\"test2\"}]";
 
@@ -151,6 +164,7 @@ public class JSONArrayTest {
 	}
 
 	@Test
+    @DisplayName("转数组")
 	public void toArrayTest() {
 		String jsonStr = FileUtil.readString("exam_test.json", CharsetUtil.CHARSET_UTF_8);
 		JSONArray array = JSONUtil.parseArray(jsonStr);
@@ -165,6 +179,7 @@ public class JSONArrayTest {
 	 * 单元测试用于测试在列表元素中有null时的情况下是否出错
 	 */
 	@Test
+    @DisplayName("转List带空")
 	public void toListWithNullTest() {
 		String json = "[null,{'akey':'avalue','bkey':'bvalue'}]";
 		JSONArray ja = JSONUtil.parseArray(json, JSONConfig.create().setIgnoreNullValue(false));
@@ -176,6 +191,7 @@ public class JSONArrayTest {
 	}
 
 	@Test
+    @DisplayName("转List带错误")
 	public void toListWithErrorTest() {
 		assertThrows(ConvertException.class, () -> {
 			String json = "[['aaa',{'akey':'avalue','bkey':'bvalue'}]]";
@@ -186,6 +202,7 @@ public class JSONArrayTest {
 	}
 
 	@Test
+    @DisplayName("转BeanList")
 	public void toBeanListTest() {
 		List<Map<String, String>> mapList = new ArrayList<>();
 		mapList.add(buildMap("0", "0", "0"));
@@ -212,6 +229,7 @@ public class JSONArrayTest {
 	}
 
 	@Test
+    @DisplayName("获取按路径")
 	public void getByPathTest() {
 		String jsonStr = "[{\"id\": \"1\",\"name\": \"a\"},{\"id\": \"2\",\"name\": \"b\"}]";
 		final JSONArray jsonArray = JSONUtil.parseArray(jsonStr);
@@ -220,6 +238,7 @@ public class JSONArrayTest {
 	}
 
 	@Test
+    @DisplayName("put转Index")
 	public void putToIndexTest() {
 		JSONArray jsonArray = new JSONArray(JSONConfig.create().setIgnoreNullValue(false));
 		jsonArray.put(3, "test");
@@ -234,6 +253,7 @@ public class JSONArrayTest {
 
 	// https://github.com/chinabugotech/hutool/issues/1858
 	@Test
+    @DisplayName("put")
 	public void putTest2() {
 		final JSONArray jsonArray = new JSONArray();
 		jsonArray.put(0, 1);
@@ -256,6 +276,7 @@ public class JSONArrayTest {
 	}
 
 	@Test
+    @DisplayName("过滤包含")
 	public void filterIncludeTest() {
 		JSONArray json1 = JSONUtil.createArray()
 			.set("value1")
@@ -268,6 +289,7 @@ public class JSONArrayTest {
 	}
 
 	@Test
+    @DisplayName("过滤排除")
 	public void filterExcludeTest() {
 		JSONArray json1 = JSONUtil.createArray()
 			.set("value1")
@@ -280,6 +302,7 @@ public class JSONArrayTest {
 	}
 
 	@Test
+    @DisplayName("put空")
 	public void putNullTest() {
 		final JSONArray array = JSONUtil.createArray(JSONConfig.create().setIgnoreNullValue(false));
 		array.set(null);
@@ -288,6 +311,7 @@ public class JSONArrayTest {
 	}
 
 	@Test
+    @DisplayName("解析过滤")
 	public void parseFilterTest() {
 		String jsonArr = "[{\"id\":111,\"name\":\"test1\"},{\"id\":112,\"name\":\"test2\"}]";
 		//noinspection MismatchedQueryAndUpdateOfCollection
@@ -297,6 +321,7 @@ public class JSONArrayTest {
 	}
 
 	@Test
+    @DisplayName("解析过滤编辑")
 	public void parseFilterEditTest() {
 		String jsonArr = "[{\"id\":111,\"name\":\"test1\"},{\"id\":112,\"name\":\"test2\"}]";
 		//noinspection MismatchedQueryAndUpdateOfCollection

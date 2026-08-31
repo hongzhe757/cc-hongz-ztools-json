@@ -1,11 +1,15 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import lombok.Data;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("BeanToJson 测试")
 public class BeanToJsonTest {
 	@Test
+    @DisplayName("转JSON字符串")
 	public void toJsonStrTest() {
 		final ReadParam readParam = new ReadParam();
 		readParam.setInitSpikeMac("a");

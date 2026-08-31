@@ -12,12 +12,16 @@
 
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("IssueI71BE6 测试")
 public class IssueI71BE6Test {
 
 	@Test
+    @DisplayName("转数组")
 	public void toArrayTest() {
 
 		final String jsonStr = "[50.0,50.0,50.0,50.0]";

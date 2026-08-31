@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.lang.Pair;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
@@ -7,8 +9,10 @@ import org.junit.jupiter.api.Test;
 import java.util.AbstractMap;
 import java.util.Map;
 
+@DisplayName("IssueI6SZYB 测试")
 public class IssueI6SZYBTest {
 	@Test
+    @DisplayName("pair")
 	public void pairTest() {
 		Pair<Integer,Integer> pair = Pair.of(1, 2);
 		String jsonStr = JSONUtil.toJsonStr(pair);
@@ -19,6 +23,7 @@ public class IssueI6SZYBTest {
 	}
 
 	@Test
+    @DisplayName("条目")
 	public void entryTest() {
 		Map.Entry<String,Integer> pair = new AbstractMap.SimpleEntry<>("1", 2);
 		String jsonStr = JSONUtil.toJsonStr(pair);

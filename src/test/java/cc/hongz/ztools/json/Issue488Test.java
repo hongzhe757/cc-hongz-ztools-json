@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,9 +11,11 @@ import cc.hongz.ztools.core.io.resource.ResourceUtil;
 import cc.hongz.ztools.core.lang.TypeReference;
 import lombok.Data;
 
+@DisplayName("Issue488 测试")
 public class Issue488Test {
 
 	@Test
+    @DisplayName("转Bean")
 	public void toBeanTest() {
 		String jsonStr = ResourceUtil.readUtf8Str("issue488.json");
 
@@ -32,6 +36,7 @@ public class Issue488Test {
 	}
 
 	@Test
+    @DisplayName("转集合Bean")
 	public void toCollctionBeanTest() {
 		String jsonStr = ResourceUtil.readUtf8Str("issue488Array.json");
 

@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.io.resource.ResourceUtil;
 import cc.hongz.ztools.core.lang.TypeReference;
 import lombok.Data;
@@ -10,9 +12,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
+@DisplayName("IssueI82AM8 测试")
 public class IssueI82AM8Test {
 
 	@Test
+    @DisplayName("转Bean")
 	public void toBeanTest() {
 		final String json = ResourceUtil.readUtf8Str("issueI82AM8.json");
 

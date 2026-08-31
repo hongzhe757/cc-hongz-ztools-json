@@ -12,6 +12,8 @@
 
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.collection.ListUtil;
 import cc.hongz.ztools.json.serialize.JSONObjectSerializer;
 import lombok.Data;
@@ -23,9 +25,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@DisplayName("Issue3086 测试")
 public class Issue3086Test {
 
 	@Test
+    @DisplayName("序列化")
 	public void serializeTest() {
 		JSONUtil.putSerializer(TestBean.class, new TestBean());
 

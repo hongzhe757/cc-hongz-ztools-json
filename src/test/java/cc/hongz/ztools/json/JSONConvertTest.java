@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.io.resource.ResourceUtil;
 import cc.hongz.ztools.json.test.bean.ExamInfoDict;
 import cc.hongz.ztools.json.test.bean.PerfectEvaluationProductResVo;
@@ -18,9 +20,11 @@ import java.util.Map;
  * @author Looly，质量过关
  *
  */
+@DisplayName("JSONConvert 测试")
 public class JSONConvertTest {
 
 	@Test
+    @DisplayName("Bean2JSON")
 	public void testBean2Json() {
 
 		UserInfoDict userInfoDict = new UserInfoDict();
@@ -66,6 +70,7 @@ public class JSONConvertTest {
 	}
 
 	@Test
+    @DisplayName("Json2Bean")
 	public void testJson2Bean() {
 		// language=JSON
 		String examJson = "{\n" + "  \"examInfoDicts\": {\n" + "    \"id\": 1,\n" + "    \"realName\": \"质量过关\",\n" //
@@ -92,6 +97,7 @@ public class JSONConvertTest {
 	 * 针对Bean中Setter返回this测试是否可以成功调用Setter方法并注入
 	 */
 	@Test
+    @DisplayName("Json2Bean2")
 	public void testJson2Bean2() {
 		String jsonStr = ResourceUtil.readUtf8Str("evaluation.json");
 		JSONObject obj = JSONUtil.parseObj(jsonStr);

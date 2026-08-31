@@ -12,6 +12,8 @@
 
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import lombok.Data;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
@@ -19,9 +21,11 @@ import org.junit.jupiter.api.Test;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+@DisplayName("IssueI6YN2A 测试")
 public class IssueI6YN2ATest {
 
 	@Test
+    @DisplayName("转Bean")
 	public void toBeanTest() {
 		final String str = "{\"conditions\":{\"user\":\"test\",\"sex\":\"男\"},\"headers\":{\"name\":\"姓名\",\"age\":\"年龄\",\"email\":\"邮箱\",\"number\":\"号码\",\"pwd\":\"密码\"}}";
 		final JSONObject jsonObject = JSONUtil.parseObj(str);

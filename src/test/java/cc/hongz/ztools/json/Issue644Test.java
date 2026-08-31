@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.date.LocalDateTimeUtil;
 import lombok.Data;
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,9 +12,11 @@ import java.time.LocalDateTime;
 /**
  * 问题反馈对象中有JDK8日期对象时转换失败，5.0.7修复
  */
+@DisplayName("Issue644 测试")
 public class Issue644Test {
 
 	@Test
+    @DisplayName("转Bean")
 	public void toBeanTest(){
 		final BeanWithDate beanWithDate = new BeanWithDate();
 		beanWithDate.setDate(LocalDateTime.now());
