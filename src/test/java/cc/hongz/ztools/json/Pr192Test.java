@@ -1,14 +1,18 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@DisplayName("Pr192 测试")
 public class Pr192Test {
 
 	@Test
+    @DisplayName("转Bean")
 	public void toBeanTest3() {
 		//		测试数字类型精度丢失的情况
 		String number = "1234.123456789123456";

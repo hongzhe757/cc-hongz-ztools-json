@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * 验证忽略大小写匹配的同时，遍历保留原始 key 大小写。
  */
+@DisplayName("CaseInsensitiveKey 测试")
 public class CaseInsensitiveKeyTest {
 
 	@Test

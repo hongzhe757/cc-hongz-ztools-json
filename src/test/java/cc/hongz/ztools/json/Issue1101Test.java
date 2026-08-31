@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.bean.BeanUtil;
 import cc.hongz.ztools.core.convert.Convert;
 import cc.hongz.ztools.core.lang.TypeReference;
@@ -13,9 +15,11 @@ import java.util.TreeSet;
 /**
  * 测试转换为TreeSet是否成功。 TreeSet必须有默认的比较器
  */
+@DisplayName("Issue1101 测试")
 public class Issue1101Test {
 
 	@Test
+    @DisplayName("树Map转换")
 	public void treeMapConvertTest(){
 		String json = "[{\"nodeName\":\"admin\",\"treeNodeId\":\"00010001_52c95b83-2083-4138-99fb-e6e21f0c1277\",\"sort\":0,\"type\":10,\"parentId\":\"00010001\",\"children\":[],\"id\":\"52c95b83-2083-4138-99fb-e6e21f0c1277\",\"status\":true},{\"nodeName\":\"test\",\"treeNodeId\":\"00010001_97054a82-f8ff-46a1-b76c-cbacf6d18045\",\"sort\":0,\"type\":10,\"parentId\":\"00010001\",\"children\":[],\"id\":\"97054a82-f8ff-46a1-b76c-cbacf6d18045\",\"status\":true}]";
 		final JSONArray objects = JSONUtil.parseArray(json);
@@ -25,6 +29,7 @@ public class Issue1101Test {
 	}
 
 	@Test
+    @DisplayName("测试")
 	public void test(){
 		String json = "{\n" +
 				"\t\"children\": [{\n" +

@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.lang.TypeReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,6 +14,7 @@ import java.util.List;
 /**
  * https://gitee.com/chinabugotech/hutool/issues/I7M2GZ
  */
+@DisplayName("IssueI7M2GZ 测试")
 public class IssueI7M2GZTest {
 
 	@Data
@@ -33,6 +36,7 @@ public class IssueI7M2GZTest {
 	}
 
 	@Test
+    @DisplayName("转List")
 	public void toListTest() {
 		final List<JSONBeanParserImpl> list = new ArrayList<>();
 		list.add(new JSONBeanParserImpl("Object1", 1));

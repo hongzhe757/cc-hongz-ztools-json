@@ -1,11 +1,14 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@DisplayName("JSONSupport 测试")
 public class JSONSupportTest {
 
 	/**
@@ -14,6 +17,7 @@ public class JSONSupportTest {
 	 * 因此parse方法默认实现必须避开JSONBeanParse.parse调用。
 	 */
 	@Test
+    @DisplayName("解析")
 	public void parseTest() {
 		String jsonstr = "{\n" +
 				"    \"location\": \"https://hutool.cn\",\n" +

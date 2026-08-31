@@ -12,12 +12,16 @@
 
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@DisplayName("Issue3289 测试")
 public class Issue3289Test {
 	@Test
+    @DisplayName("解析")
 	public void parseTest() {
 		assertThrows(JSONException.class, () -> {
 			final String s = "{\"a\":1,[6E962756779]}";

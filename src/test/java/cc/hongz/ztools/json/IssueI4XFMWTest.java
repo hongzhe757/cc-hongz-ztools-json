@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.annotation.Alias;
 import lombok.Data;
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,9 +13,11 @@ import java.util.List;
 /**
  * https://gitee.com/chinabugotech/hutool/issues/I4XFMW
  */
+@DisplayName("IssueI4XFMW 测试")
 public class IssueI4XFMWTest {
 
 	@Test
+    @DisplayName("测试")
 	public void test() {
 		List<TestEntity> entityList = new ArrayList<>();
 		TestEntity entityA = new TestEntity();

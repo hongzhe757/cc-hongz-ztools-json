@@ -1,11 +1,15 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("JSONNull 测试")
 public class JSONNullTest {
 
 	@Test
+    @DisplayName("解析空")
 	public void parseNullTest(){
 		JSONObject bodyjson = JSONUtil.parseObj("{\n" +
 				"            \"device_model\": null,\n" +
@@ -21,6 +25,7 @@ public class JSONNullTest {
 	}
 
 	@Test
+    @DisplayName("解析空")
 	public void parseNullTest2(){
 		JSONObject bodyjson = JSONUtil.parseObj("{\n" +
 				"            \"device_model\": null,\n" +

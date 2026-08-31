@@ -1,11 +1,15 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import lombok.Data;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("Issue3541 测试")
 public class Issue3541Test {
 	@Test
+    @DisplayName("long转String")
 	public void longToStringTest() {
 		Demo demo = new Demo();
 		demo.setId(1227690722069581409L);

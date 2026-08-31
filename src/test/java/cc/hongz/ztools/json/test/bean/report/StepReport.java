@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json.test.bean.report;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.util.StrUtil;
 
 /**
@@ -82,6 +84,7 @@ public class StepReport {
 		this.stepName = stepName;
 	}
 
+    @DisplayName("设置步骤名称")
 	public void setStepName() {
 		this.stepName = this.actionName + (StrUtil.isBlank(this.elementName) ? "" : " => " + this.elementName);
 	}

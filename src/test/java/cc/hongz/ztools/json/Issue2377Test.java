@@ -1,13 +1,17 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+@DisplayName("Issue2377 测试")
 public class Issue2377Test {
 
 	@Test
+    @DisplayName("字节")
 	public void bytesTest() {
 		final Object[] paramArray = new Object[]{1, new byte[]{10, 11}, "报表.xlsx"};
 		final String paramsStr = JSONUtil.toJsonStr(paramArray);

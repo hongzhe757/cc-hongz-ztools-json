@@ -1,11 +1,15 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.lang.Console;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("Issue3619 测试")
 public class Issue3619Test {
 	@Test
+    @DisplayName("解析对象")
 	public void parseObjTest() {
 		String json = "{\"@timestamp\":\"2024-06-14T00:02:06.438Z\",\"@version\":\"1\",\"int_arr\":[-4]}";
 		JSONConfig jsonConfig = JSONConfig.create().setKeyComparator(String.CASE_INSENSITIVE_ORDER);

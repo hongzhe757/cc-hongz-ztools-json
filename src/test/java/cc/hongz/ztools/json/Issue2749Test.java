@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -7,10 +9,12 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+@DisplayName("Issue2749 测试")
 public class Issue2749Test {
 
 	@Test
 	@Disabled
+    @DisplayName("JSONObject")
 	public void jsonObjectTest() {
 		final Map<String, Object> map = new HashMap<>(1, 1f);
 		Map<String, Object> node = map;

@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import lombok.Data;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -7,8 +9,10 @@ import org.junit.jupiter.api.Test;
 import java.text.ParseException;
 import java.util.Date;
 
+@DisplayName("Issue3713 测试")
 public class Issue3713Test {
 	@Test
+    @DisplayName("转Bean")
 	void toBeanTest() throws ParseException {
 		String jsonStr = "{\"operDate\":\"Aug 22, 2024, 4:21:21 PM\"}";
 		final CustomerCreateLog bean = JSONUtil.toBean(jsonStr, JSONConfig.create().setDateFormat("MMM dd, yyyy, h:mm:ss a"), CustomerCreateLog.class);

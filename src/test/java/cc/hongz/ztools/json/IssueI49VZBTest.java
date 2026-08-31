@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.convert.Convert;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * https://gitee.com/chinabugotech/hutool/issues/I49VZB
  */
+@DisplayName("IssueI49VZB 测试")
 public class IssueI49VZBTest {
 	public enum NBCloudKeyType {
 		/**
@@ -63,6 +66,7 @@ public class IssueI49VZBTest {
 	}
 
 	@Test
+    @DisplayName("转Bean")
 	public void toBeanTest(){
 		String str = "{type: \"password\"}";
 		final UPOpendoor upOpendoor = JSONUtil.toBean(str, UPOpendoor.class);
@@ -70,6 +74,7 @@ public class IssueI49VZBTest {
 	}
 
 	@Test
+    @DisplayName("enum转换")
 	public void enumConvertTest(){
 		final NBCloudKeyType type = Convert.toEnum(NBCloudKeyType.class, "snapKey");
 		assertEquals(NBCloudKeyType.snapKey, type);

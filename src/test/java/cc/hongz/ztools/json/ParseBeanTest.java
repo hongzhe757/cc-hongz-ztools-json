@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,9 +16,11 @@ import cc.hongz.ztools.core.collection.CollUtil;
  * @author looly
  *
  */
+@DisplayName("ParseBean 测试")
 public class ParseBeanTest {
 
 	@Test
+    @DisplayName("解析Bean")
 	public void parseBeanTest() {
 
 		C c1 = new C();

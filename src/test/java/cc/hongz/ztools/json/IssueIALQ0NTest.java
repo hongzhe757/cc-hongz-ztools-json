@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.date.DateUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -7,8 +9,10 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+@DisplayName("IssueIALQ0N 测试")
 public class IssueIALQ0NTest {
 	@Test
+    @DisplayName("转JSON字符串")
 	void toJsonStrTest() {
 		Map<String, Object> map = new HashMap<>();
 		map.put("id", 1826166955313201152L);

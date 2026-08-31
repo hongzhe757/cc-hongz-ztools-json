@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json.xml;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.json.JSONObject;
 import cc.hongz.ztools.json.JSONUtil;
 import cc.hongz.ztools.json.XML;
@@ -8,9 +10,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@DisplayName("XML 测试")
 public class XMLTest {
 
 	@Test
+    @DisplayName("转XML")
 	public void toXmlTest() {
 		final JSONObject put = JSONUtil.createObj()
 			.set("aaa", "你好")
@@ -20,6 +24,7 @@ public class XMLTest {
 	}
 
 	@Test
+    @DisplayName("escape")
 	public void escapeTest() {
 		String xml = "<a>•</a>";
 		JSONObject jsonObject = XML.toJSONObject(xml);
@@ -31,6 +36,7 @@ public class XMLTest {
 	}
 
 	@Test
+    @DisplayName("XML内容")
 	public void xmlContentTest() {
 		JSONObject jsonObject = JSONUtil.createObj().set("content", "123456");
 

@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import lombok.Data;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
@@ -8,9 +10,11 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+@DisplayName("Issue2223 测试")
 public class Issue2223Test {
 
 	@Test
+    @DisplayName("转字符串顺序")
 	public void toStrOrderTest() {
 		Map<String, Long> m1 = new LinkedHashMap<>();
 		for (long i = 0; i < 5; i++) {

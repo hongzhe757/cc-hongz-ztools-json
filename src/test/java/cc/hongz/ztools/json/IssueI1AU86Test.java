@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.collection.CollUtil;
 import lombok.Data;
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,9 +17,11 @@ import java.util.List;
  * 就算知道也不能盲目解析，否则可能违背用户的初衷。<br>
  * 因此遇到List中的元素是String的情况下，用户需手动单独parse。
  */
+@DisplayName("IssueI1AU86 测试")
 public class IssueI1AU86Test {
 
 	@Test
+    @DisplayName("转List")
 	public void toListTest() {
 		List<String> redisList = CollUtil.newArrayList(
 				"{\"updateDate\":1583376342000,\"code\":\"move\",\"id\":1,\"sort\":1,\"name\":\"电影大全\"}",

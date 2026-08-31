@@ -12,14 +12,18 @@
 
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.lang.TypeReference;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
+@DisplayName("IssueI7FQ29 测试")
 public class IssueI7FQ29Test {
 	@Test
+    @DisplayName("转Map")
 	public void toMapTest() {
 		final String jsonStr = "{\"trans_no\": \"java.lang.String\"}";
 		final Map<String, Class<?>> map = JSONUtil.toBean(jsonStr, new TypeReference<Map<String, Class<?>>>() {

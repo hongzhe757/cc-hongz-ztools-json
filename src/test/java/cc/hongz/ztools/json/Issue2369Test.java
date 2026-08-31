@@ -1,11 +1,15 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("Issue2369 测试")
 public class Issue2369Test {
 
 	@Test
+    @DisplayName("转JSON字符串")
 	public void toJsonStrTest(){
 		//https://github.com/chinabugotech/hutool/issues/2369
 		// byte[]数组对于JSONArray来说，即可能是一个JSON字符串的二进制流，也可能是普通数组，因此需要做双向兼容

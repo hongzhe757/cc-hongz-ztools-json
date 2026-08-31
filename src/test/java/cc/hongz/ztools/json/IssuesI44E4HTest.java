@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.json.serialize.GlobalSerializeMapping;
 import cc.hongz.ztools.json.serialize.JSONDeserializer;
 import lombok.AllArgsConstructor;
@@ -11,9 +13,11 @@ import org.junit.jupiter.api.Test;
 /**
  * 测试自定义反序列化
  */
+@DisplayName("IssuesI44E4H 测试")
 public class IssuesI44E4HTest {
 
 	@Test
+    @DisplayName("deserializer")
 	public void deserializerTest(){
 		GlobalSerializeMapping.put(TestDto.class, (JSONDeserializer<TestDto>) json -> {
 			final TestDto testDto = new TestDto();

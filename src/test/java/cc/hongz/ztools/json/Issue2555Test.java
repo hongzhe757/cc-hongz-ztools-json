@@ -1,14 +1,18 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.json.serialize.JSONDeserializer;
 import cc.hongz.ztools.json.serialize.JSONObjectSerializer;
 import lombok.Data;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("Issue2555 测试")
 public class Issue2555Test {
 
 	@Test
+    @DisplayName("serAndDeser")
 	public void serAndDeserTest(){
 		JSONUtil.putSerializer(MyType.class, new MySerializer());
 		JSONUtil.putDeserializer(MyType.class, new MyDeserializer());
@@ -28,6 +32,7 @@ public class Issue2555Test {
 	}
 
 	@Test
+    @DisplayName("deser")
 	public void deserTest(){
 		JSONUtil.putDeserializer(MyType.class, new MyDeserializer());
 

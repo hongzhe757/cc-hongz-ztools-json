@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import lombok.Data;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
@@ -7,9 +9,11 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+@DisplayName("Issue3588 测试")
 public class Issue3588Test {
 
 	@Test
+    @DisplayName("转Bean忽略大小写")
 	public void toBeanIgnoreCaseTest() {
 		String json = "{id: 1, code: 1122, tsemaphores: [{type: 1, status: 12}]}";
 		AttrData attrData = JSONUtil.toBean(json, JSONConfig.create().setIgnoreCase(true), AttrData.class);

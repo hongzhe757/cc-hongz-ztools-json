@@ -12,13 +12,17 @@
 
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import lombok.Data;
 import lombok.Getter;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("Issue3274 测试")
 public class Issue3274Test {
 	@Test
+    @DisplayName("转Bean")
 	public void toBeanTest(){
 		final JSONObject entries = new JSONObject("{\n" +
 			"    \n" +

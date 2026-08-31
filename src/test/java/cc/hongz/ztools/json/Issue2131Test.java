@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import cc.hongz.ztools.core.collection.ListUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,9 +17,11 @@ import java.util.stream.Stream;
  * https://github.com/chinabugotech/hutool/issues/2131<br>
  * 字段定义成final，意味着setCollections无效，因此JSON转Bean的时候无法调用setCollections注入，所以是空的。
  */
+@DisplayName("Issue2131 测试")
 public class Issue2131Test {
 
 	@Test
+    @DisplayName("字符串转Bean")
 	public void strToBean() {
 		GoodsResponse goodsResponse = new GoodsResponse();
 		GoodsItem apple = new GoodsItem().setGoodsId(1L).setGoodsName("apple").setChannel("wechat");

@@ -1,5 +1,7 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import lombok.Data;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
@@ -12,9 +14,11 @@ import java.time.Month;
 /**
  * https://github.com/chinabugotech/hutool/issues/2090
  */
+@DisplayName("Issue2090 测试")
 public class Issue2090Test {
 
 	@Test
+    @DisplayName("解析")
 	public void parseTest(){
 		final TestBean test = new TestBean();
 		test.setLocalDate(LocalDate.now());
@@ -25,6 +29,7 @@ public class Issue2090Test {
 	}
 
 	@Test
+    @DisplayName("解析本地日期")
 	public void parseLocalDateTest(){
 		LocalDate localDate = LocalDate.now();
 		final JSONObject jsonObject = JSONUtil.parseObj(localDate);
@@ -32,6 +37,7 @@ public class Issue2090Test {
 	}
 
 	@Test
+    @DisplayName("转Bean本地日期")
 	public void toBeanLocalDateTest(){
 		LocalDate d = LocalDate.now();
 		final JSONObject obj = JSONUtil.parseObj(d);
@@ -40,6 +46,7 @@ public class Issue2090Test {
 	}
 
 	@Test
+    @DisplayName("转Bean本地日期时间")
 	public void toBeanLocalDateTimeTest(){
 		LocalDateTime d = LocalDateTime.now();
 		final JSONObject obj = JSONUtil.parseObj(d);
@@ -48,6 +55,7 @@ public class Issue2090Test {
 	}
 
 	@Test
+    @DisplayName("转Bean本地时间")
 	public void toBeanLocalTimeTest(){
 		LocalTime d = LocalTime.now();
 		final JSONObject obj = JSONUtil.parseObj(d);
@@ -56,6 +64,7 @@ public class Issue2090Test {
 	}
 
 	@Test
+    @DisplayName("month")
 	public void monthTest(){
 		final JSONObject jsonObject = new JSONObject();
 		jsonObject.set("month", Month.JANUARY);

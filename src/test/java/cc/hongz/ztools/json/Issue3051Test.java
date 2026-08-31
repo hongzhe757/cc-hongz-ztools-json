@@ -12,6 +12,8 @@
 
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import lombok.Data;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
@@ -19,8 +21,10 @@ import org.junit.jupiter.api.Test;
 /**
  * https://github.com/chinabugotech/hutool/issues/3051
  */
+@DisplayName("Issue3051 测试")
 public class Issue3051Test {
 	@Test
+    @DisplayName("解析")
 	public void parseTest() {
 		final JSONObject jsonObject = JSONUtil.parseObj(new EmptyBean(),
 			JSONConfig.create().setIgnoreError(true));
@@ -29,6 +33,7 @@ public class Issue3051Test {
 	}
 
 	@Test
+    @DisplayName("解析")
 	public void parseTest2() {
 		final JSONObject jsonObject = JSONUtil.parseObj(new EmptyBean());
 

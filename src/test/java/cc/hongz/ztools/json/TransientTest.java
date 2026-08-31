@@ -1,9 +1,12 @@
 package cc.hongz.ztools.json;
 
+import org.junit.jupiter.api.DisplayName;
+
 import lombok.Data;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("Transient 测试")
 public class TransientTest {
 
 	@Data
@@ -13,6 +16,7 @@ public class TransientTest {
 	}
 
 	@Test
+    @DisplayName("BeanWithoutTransient")
 	public void beanWithoutTransientTest(){
 		Bill detailBill = new Bill();
 		detailBill.setId("3243");
@@ -25,6 +29,7 @@ public class TransientTest {
 	}
 
 	@Test
+    @DisplayName("Bean带Transient")
 	public void beanWithTransientTest(){
 		Bill detailBill = new Bill();
 		detailBill.setId("3243");
@@ -37,6 +42,7 @@ public class TransientTest {
 	}
 
 	@Test
+    @DisplayName("BeanWithoutTransient转Bean")
 	public void beanWithoutTransientToBeanTest(){
 		Bill detailBill = new Bill();
 		detailBill.setId("3243");
@@ -51,6 +57,7 @@ public class TransientTest {
 	}
 
 	@Test
+    @DisplayName("Bean带Transient转Bean")
 	public void beanWithTransientToBeanTest(){
 		Bill detailBill = new Bill();
 		detailBill.setId("3243");
