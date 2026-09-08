@@ -1,6 +1,7 @@
 package cc.hongz.ztools.json;
 
 import cc.hongz.ztools.core.util.StrUtil;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 import java.io.Serializable;
 
@@ -52,5 +53,18 @@ public class JSONNull implements Serializable {
     @Override
     public String toString() {
         return StrUtil.NULL;
+    }
+
+    /**
+     * Jackson 序列化时输出 JSON null。
+     * <p>
+     * {@code JSONNull} 是空 bean，默认会触发 Jackson 的 FAIL_ON_EMPTY_BEANS 异常，
+     * 通过 {@link JsonValue} 标注让 Jackson 把它序列化为 null。
+     *
+     * @return null
+     */
+    @JsonValue
+    public Object jsonValue() {
+        return null;
     }
 }
